@@ -1,17 +1,15 @@
-import {db, getAllMovies} from "@/db";
-import {movies} from "@/db/schema";
+import {getAllMovies} from "@/db";
+import {Form} from "@/ui/Form";
 
 const Home = async () => {
-  const allMovies = db.select().from(movies).all();
-
-  console.log("movies: " +allMovies);
+  const allMovies = getAllMovies();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="container mx-auto">
       <h1 className="text-6xl font-bold text-center">
         Movies
       </h1>
-      <pre>{JSON.stringify(allMovies, null, 2)}</pre>
+      <pre className="mt-16">{JSON.stringify(allMovies, null, 2)}</pre>
     </main>
   )
 }
