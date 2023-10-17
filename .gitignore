@@ -36,3 +36,7 @@ next-env.d.ts
 
 # IDE files
 /.idea
+
+# DB files
+/drizzle
+sqlite.db
