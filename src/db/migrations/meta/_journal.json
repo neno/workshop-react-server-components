@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1697619417247,
-      "tag": "0000_wandering_shinobi_shaw",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1697627973037,
-      "tag": "0001_useful_lila_cheney",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1697629409762,
-      "tag": "0002_slimy_alex_wilder",
+      "when": 1697632605730,
+      "tag": "0000_numerous_sage",
       "breakpoints": true
     }
   ]
