@@ -8,11 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "db:start": "pnpm exec drizzle-kit studio",
+    "db:generate": "pnpm exec drizzle-kit generate:sqlite --config=drizzle.config.ts",
+    "db:introspect": "pnpm exec drizzle-kit introspect:sqlite --config=drizzle.config.ts",
     "db:push": "pnpm exec drizzle-kit push:sqlite"
   },
   "dependencies": {
     "better-sqlite3": "^9.0.0",
     "drizzle-orm": "^0.28.6",
+    "drizzle-zod": "^0.5.1",
     "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18",

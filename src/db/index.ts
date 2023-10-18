@@ -4,17 +4,17 @@ import {migrate} from "drizzle-orm/better-sqlite3/migrator";
 import {movies} from "@/db/schema";
 import {useId} from "react";
 
-const sqlite = new Database("sqlite.db");
+const sqlite = new Database("data.db");
 export const db: BetterSQLite3Database = drizzle(sqlite);
 
-migrate(db, {migrationsFolder: "drizzle"});
+// migrate(db, {migrationsFolder: "drizzle"});
 
-db.insert(movies).values({ id: "1", title: "The Matrix" }).execute();
+// db.insert(movies).values({ id: "1", title: "The Matrix" }).execute();
 
-export const getAllMovies = () => {
-  return db.select().from(movies).all();
-}
+// export const getAllMovies = () => {
+//   return db.select().from(movies).all();
+// }
 
-export const addMovie = (id: string, title: string) => {
-  return db.insert(movies).values({id, title}).execute();
-}
+// export const addMovie = (id: string, title: string) => {
+//   return db.insert(movies).values({id, title}).execute();
+// }
