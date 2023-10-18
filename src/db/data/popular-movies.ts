@@ -1,4 +1,4 @@
-import { TmdbMovieItem } from '@/schemas/tmdbMovieItem';
+import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
 // 20 popular movies taken from The Movie Database (TMDb)
 // https://api.themoviedb.org/3/movie/popular?api_key=00f3f32198696caff437631c007a7548&page=1
 // https://api.themoviedb.org/3/movie/popular?api_key=00f3f32198696caff437631c007a7548&page=2
