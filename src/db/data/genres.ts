@@ -1,3 +1,8 @@
+import { actionMovies } from './action-movies';
+import { comedyMovies } from './comedy-movies';
+import { dramaMovies } from './drama-movies';
+import { sciFiMovies } from './sci-fi-movies';
+
 export const genres = [
   { id: 28, name: 'Action' },
   { id: 12, name: 'Adventure' },
@@ -19,3 +24,9 @@ export const genres = [
   { id: 10752, name: 'War' },
   { id: 37, name: 'Western' },
 ];
+
+export const genreMoviesMap = new Map<number, number[]>();
+genreMoviesMap.set(28, actionMovies.map((movie) => movie.id));
+genreMoviesMap.set(35, comedyMovies.map((movie) => movie.id));
+genreMoviesMap.set(18, dramaMovies.map((movie) => movie.id));
+genreMoviesMap.set(878, sciFiMovies.map((movie) => movie.id));

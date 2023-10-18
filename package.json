@@ -8,9 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "db:start": "pnpm exec drizzle-kit studio",
-    "db:generate": "pnpm exec drizzle-kit generate:sqlite --config=drizzle.config.ts",
+    "db:generate": "pnpm drizzle-kit generate:sqlite --config=drizzle.config.ts",
+    "db:generate2": "pnpm exec drizzle-kit generate:sqlite --config=drizzle.config.ts",
     "db:introspect": "pnpm exec drizzle-kit introspect:sqlite --config=drizzle.config.ts",
-    "db:push": "pnpm exec drizzle-kit push:sqlite",
+    "db:push": "pnpm drizzle-kit push:sqlite",
     "db:seed": "tsx ./src/db/seed/index.ts --config=drizzle.config.ts"
   },
   "dependencies": {

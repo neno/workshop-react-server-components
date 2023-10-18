@@ -3,9 +3,25 @@ import { MovieType, ommittedKeys, selectMovieSchema } from '../schema';
 import { snakeToCamel } from "@/lib/helpers";
 import { addMovie } from "@/db";
 import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
+import { topRatedMovies } from '../data/top-rated-movies';
+import { upcomingMovies } from '../data/upcoming-movies';
+import { actionMovies } from '../data/action-movies';
+import { dramaMovies } from '../data/drama-movies';
+import { comedyMovies } from '../data/comedy-movies';
+import { sciFiMovies } from '../data/sci-fi-movies';
 
-export function addPopularMovies() {
-  const myPopularMovies = popularMovies.map((movie: TmdbMovieItem) => {
+const allMovies: TmdbMovieItem[] = [
+  ...popularMovies,
+  ...topRatedMovies,
+  ...upcomingMovies,
+  ...actionMovies,
+  ...dramaMovies,
+  ...comedyMovies,
+  ...sciFiMovies
+];
+
+export function addAllMovies() {
+  const allMyMovies = allMovies.map((movie: TmdbMovieItem) => {
     let newMovie: MovieType = {} as MovieType;
     Object.keys(movie).filter((key) => !ommittedKeys.includes(key)).forEach((key) => {
       let value = movie[key as keyof TmdbMovieItem] ?? null;
@@ -25,7 +41,7 @@ export function addPopularMovies() {
     return newMovie;
   });
 
-  const validatedMovies = myPopularMovies.map((movie) => selectMovieSchema.parse(movie));
+  const validatedMovies = allMyMovies.map((movie) => selectMovieSchema.parse(movie));
   validatedMovies.forEach((movie) => {
     addMovie(movie);
   });
