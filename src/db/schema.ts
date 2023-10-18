@@ -1,6 +1,7 @@
 import { TmdbMovieItem } from '@/schemas/tmdbMovieItem';
 import { InferSelectModel, sql } from 'drizzle-orm';
-import { integer, text, SQLiteBoolean, sqliteTable } from 'drizzle-orm/sqlite-core';
+import { real } from 'drizzle-orm/sqlite-core';
+import { integer, numeric, text, sqliteTable } from 'drizzle-orm/sqlite-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 // import {sqliteTable, text, SQLiteBoolean} from "drizzle-orm/sqlite-core";
@@ -34,8 +35,8 @@ export const movies = sqliteTable("movies", {
   // video: integer('video'),
   originalLanguage: text('original_language'),
   originalTitle: text('original_title'),
-  popularity: integer('popularity'),
-  voteAverage: integer('vote_average'),
+  popularity: real('popularity'),
+  voteAverage: real('vote_average'),
   voteCount: integer('vote_count'),
 });
 

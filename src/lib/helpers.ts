@@ -8,3 +8,13 @@ export const snakeToCamel = (str: string): string => {
 export const mapMovies = (movies: TmdbMovieItem[]): MovieType[] => {
   return movies.map(movie => selectMovieSchema.parse(movie));
 };
+
+// export function mapMovies(movies: TmdbMovieItem) {
+//   return movies.map((movie) => {
+//     const newMovie = {};
+//     Object.keys(movie).forEach((key) => {
+//       // @ts-ignore converting snake_case to camelCase key
+//       newMovie[snakeToCamel(key)] = movie[key];
+//     });
+//   });
+// }

@@ -7,6 +7,8 @@ import {useId} from "react";
 const sqlite = new Database("data.db");
 export const db: BetterSQLite3Database = drizzle(sqlite);
 
+console.log("db", db);
+
 // migrate(db, {migrationsFolder: "drizzle"});
 
 // db.insert(movies).values({ id: "1", title: "The Matrix" }).execute();
