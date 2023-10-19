@@ -1,0 +1,1 @@
+ALTER TABLE movies ADD `backdrop_path` text;
