@@ -10,7 +10,7 @@ interface IMovieCardProps {
 export const MovieCard = ({ movie } : IMovieCardProps) => {
   return (
     <div key={movie.id} className="relative aspect-[2/3]">
-      <Image className="object-cover" sizes="20vw" fill src={getImageUrl(movie.posterPath)} alt={movie.title || ""} />
+      <Image className="object-cover" sizes="17vw" fill src={getImageUrl(movie.posterPath)} alt={movie.title || ""} />
       <PreviewModalWrapper movie={movie} />
     </div>
   );
