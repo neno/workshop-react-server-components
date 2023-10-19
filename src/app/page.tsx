@@ -3,7 +3,7 @@ import {
   getMoviesByGenre,
   searchByTitle,
 } from '@/lib/api';
-import {MovieCard} from "@/ui/MovieCard";
+import {MovieList} from "@/ui/MovieList";
 
 const Home = async () => {
   const popularMovies = await getMoviesByCategory(1);
@@ -15,21 +15,15 @@ const Home = async () => {
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
       <section>
         <h2 className='text-4xl font-bold text-center'>Search Movies</h2>
-        {searchMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <MovieList movies={searchMovies} />
       </section>
       <section>
         <h2 className='text-4xl font-bold text-center'>Popular Movies</h2>
-        {popularMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <MovieList movies={popularMovies} />
       </section>
       <section>
         <h2 className='text-4xl font-bold text-center'>Action Movies</h2>
-        {actionMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <MovieList movies={actionMovies} />
       </section>
     </main>
   );
