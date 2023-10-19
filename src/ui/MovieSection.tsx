@@ -7,7 +7,7 @@ interface IMoviesSectionProps {
   className?: string
 }
 
-export const Section = ({movies, title, className} : IMoviesSectionProps) => {
+export const MovieSection = ({movies, title, className} : IMoviesSectionProps) => {
   return (
     <section className={className}>
       <h2 className='text-4xl font-bold'>{title}</h2>
