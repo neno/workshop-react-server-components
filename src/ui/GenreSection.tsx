@@ -12,7 +12,7 @@ export const GenreSection = async({id, title, className} : IGenreSectionProps) =
   return (
     <section className={className}>
       <h2 className='text-4xl font-bold'>{title}</h2>
-      <MovieList movies={movies} showAllHref={`/genre/${id}`} />
+      <MovieList movies={movies} showAllHref={`/genres/${id}`} />
     </section>
   )
 }

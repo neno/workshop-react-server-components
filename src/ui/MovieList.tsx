@@ -4,14 +4,14 @@ import {ShowAll} from "@/ui/ShowAll";
 
 interface IMovieListProps {
   movies: Pick<MovieType, 'id' | 'posterPath' | 'title'>[]
-  showAllHref: string
+  showAllHref?: string
 }
 
 export const MovieList = ({ movies, showAllHref } : IMovieListProps) => {
   return (
     <div className="grid grid-cols-6 gap-4 mt-8">
       {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-      <ShowAll href={showAllHref} />
+      {showAllHref && <ShowAll href={showAllHref} />}
     </div>
   )
 }
