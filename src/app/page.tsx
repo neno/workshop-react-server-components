@@ -1,7 +1,6 @@
 import {
   searchByTitle,
 } from '@/lib/api';
-
 import {GenreSection} from "@/ui/GenreSection";
 import {CategorySection} from "@/ui/CategorySection";
 
