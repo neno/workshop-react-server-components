@@ -1,6 +1,8 @@
 import Image from "next/image";
 import {MovieType} from "@/db/schema";
+
 import {getImageUrl} from "@/lib/helpers";
+
 
 interface IMovieCardProps {
   movie: Pick<MovieType, 'id' | 'posterPath' | 'title'>
