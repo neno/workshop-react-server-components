@@ -11,6 +11,8 @@ const Home = async () => {
     <main className='container mx-auto'>
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
       {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
+      // TODO: - add search component
+      // TODO: - maybe we could use the same component for categories and genre
       <CategorySection className="mt-16" title="Popular Movies" id={1} />
       <CategorySection className="mt-16" title="Top-rated" id={2} />
       <CategorySection className="mt-16" title="Upcoming" id={3} />
