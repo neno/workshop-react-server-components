@@ -8,7 +8,7 @@ interface IMovieCardProps {
 
 export const MovieCard = ({ movie } : IMovieCardProps) => {
   return (
-    <div key={movie.id} className="relative aspect-[12] cursor-pointer">
+    <div key={movie.id} className="relative aspect-[2/3] cursor-pointer">
       <Image className="object-cover" sizes="17vw" fill src={getImageUrl(movie.posterPath)} alt={movie.title || ""} />
     </div>
   );
