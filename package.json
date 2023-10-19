@@ -15,6 +15,7 @@
     "db:seed": "tsx ./src/db/seed/index.ts --config=drizzle.config.ts"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "better-sqlite3": "^9.0.0",
     "drizzle-orm": "^0.28.6",
     "drizzle-zod": "^0.5.1",

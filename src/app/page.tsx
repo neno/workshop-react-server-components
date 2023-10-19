@@ -1,21 +1,23 @@
 import {
-  getMoviesByCategory,
-  getMoviesByGenre,
   searchByTitle,
 } from '@/lib/api';
-import {MovieSection} from "@/ui/MovieSection";
+import {GenreSection} from "@/ui/GenreSection";
+import {CategorySection} from "@/ui/CategorySection";
 
 const Home = async () => {
-  const popularMovies = await getMoviesByCategory(1);
-  const actionMovies = await getMoviesByGenre(28);
   const searchMovies = await searchByTitle('father');
 
   return (
     <main className='container mx-auto'>
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
-      <MovieSection movies={searchMovies} title="Search Movies" />
-      <MovieSection className="mt-16" movies={popularMovies} title="Popular Movies" />
-      <MovieSection className="mt-16" movies={actionMovies} title="Action Movies" />
+      {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
+      <CategorySection className="mt-16" title="Popular Movies" id={1} />
+      <CategorySection className="mt-16" title="Top-rated" id={2} />
+      <CategorySection className="mt-16" title="Upcoming" id={3} />
+      <GenreSection className="mt-16" title="Action Movies" id={28} />
+      <GenreSection className="mt-16" title="Comedy Movies" id={35} />
+      <GenreSection className="mt-16" title="Drama Movies" id={18} />
+      <GenreSection className="mt-16" title="Science Fiction Movies" id={878} />
     </main>
   );
 };

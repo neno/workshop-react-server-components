@@ -1,7 +1,7 @@
 import { getCategoryById, getGenreById, getMoviesByIds, searchMoviesByTitle } from '@/db';
 import { MovieType } from '@/db/schema';
 
-export async function getMoviesByCategory(id: number) {
+export async function getMoviesByCategory(id: number, options = {}) {
   const res = await getCategoryById(id);
 
   if (!res.length) {
@@ -9,10 +9,10 @@ export async function getMoviesByCategory(id: number) {
   }
 
   const movieIds = res[0].movieIds.split(',').map(Number);
-  return await getMoviesByIds(movieIds);
+  return await getMoviesByIds(movieIds, options);
 }
 
-export async function getMoviesByGenre(id: number) {
+export async function getMoviesByGenre(id: number, options = {}) {
   const res = await getGenreById(id);
 
   if (!res.length) {
@@ -20,7 +20,7 @@ export async function getMoviesByGenre(id: number) {
   }
 
   const movieIds = res[0].movieIds.split(',').map(Number);
-  return await getMoviesByIds(movieIds);
+  return await getMoviesByIds(movieIds, options);
 }
 
 export async function searchByTitle(title: string): Promise<MovieType[]> {
