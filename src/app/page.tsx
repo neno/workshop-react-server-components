@@ -1,8 +1,6 @@
-import {
-  searchByTitle,
-} from '@/lib/api';
-import {GenreSection} from "@/ui/GenreSection";
-import {CategorySection} from "@/ui/CategorySection";
+import { searchByTitle } from '@/lib/api';
+import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
+import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
 
 const Home = async () => {
   const searchMovies = await searchByTitle('father');
@@ -11,15 +9,14 @@ const Home = async () => {
     <main className='container mx-auto'>
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
       {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
-      // TODO: - add search component
-      // TODO: - maybe we could use the same component for categories and genre
-      <CategorySection className="mt-16" title="Popular Movies" id={1} />
-      <CategorySection className="mt-16" title="Top-rated" id={2} />
-      <CategorySection className="mt-16" title="Upcoming" id={3} />
-      <GenreSection className="mt-16" title="Action Movies" id={28} />
-      <GenreSection className="mt-16" title="Comedy Movies" id={35} />
-      <GenreSection className="mt-16" title="Drama Movies" id={18} />
-      <GenreSection className="mt-16" title="Science Fiction Movies" id={878} />
+      {/* TODO: - add search component // TODO: - maybe we could use the same component for categories and genre */}
+      <MoviesByCategory id={1} />
+      <MoviesByCategory id={2} />
+      <MoviesByCategory id={3} />
+      <MoviesByGenre id={28} />
+      <MoviesByGenre id={35} />
+      <MoviesByGenre id={18} />
+      <MoviesByGenre id={878} />
     </main>
   );
 };
