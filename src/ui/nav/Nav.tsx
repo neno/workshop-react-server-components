@@ -1,29 +1,16 @@
-import { getAllCategories, getAllGenres } from '@/db';
 import { NavLink } from './NavLink';
+import {NavDropdownControl} from "@/ui/nav/NavDropdownControl";
+import {getAllCategories, getAllGenres} from "@/db";
 
 export async function Nav() {
   const categories = await getAllCategories();
   const genres = await getAllGenres();
+  const items = { categories: [...categories], genres: [...genres] };
 
   return (
-    <nav className=''>
+    <nav className='flex gap-8'>
       <NavLink href='/'>Home</NavLink>
-      <ul>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <NavLink href={`/categories/${category.id}`}>
-              {category.name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {genres.map((genre) => (
-          <li key={genre.id}>
-            <NavLink href={`/genres/${genre.id}`}>{genre.name}</NavLink>
-          </li>
-        ))}
-      </ul>
+      <NavDropdownControl items={items} /> {/* TODO: - think how to pass in navdropdown as children so they can be RSC */}
     </nav>
   );
 }

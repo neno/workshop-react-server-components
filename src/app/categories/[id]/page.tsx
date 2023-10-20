@@ -8,9 +8,6 @@ const CategoryPage = async ({ params: { id } }: { params: { id: number } }) => {
   const movies = await getMoviesByCategory(id);
   return (
     <>
-      <h1 className='text-6xl font-bold text-center'>
-        Category: {category.name}
-      </h1>
       <H1 heading={`Category: ${category.name}`} />
       <MovieList movies={movies} />
     </>

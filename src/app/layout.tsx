@@ -19,12 +19,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <header>
+        <header className="py-8 bg-neutral-800">
           <Container>
             <Nav />
           </Container>
         </header>
-        <main className='container mx-auto'>
+        <main className='container mx-auto mt-16'>
           <Container>{children}</Container>
         </main>
       </body>
