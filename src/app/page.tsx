@@ -1,36 +1,22 @@
-import {
-  getMoviesByCategory,
-  getMoviesByGenre,
-  searchByTitle,
-} from '@/lib/api';
-import {MovieCard} from "@/ui/MovieCard";
+import { searchByTitle } from '@/lib/api';
+import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
+import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
 
 const Home = async () => {
-  const popularMovies = await getMoviesByCategory(1);
-  const actionMovies = await getMoviesByGenre(28);
   const searchMovies = await searchByTitle('father');
 
   return (
     <main className='container mx-auto'>
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
-      <section>
-        <h2 className='text-4xl font-bold text-center'>Search Movies</h2>
-        {searchMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </section>
-      <section>
-        <h2 className='text-4xl font-bold text-center'>Popular Movies</h2>
-        {popularMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </section>
-      <section>
-        <h2 className='text-4xl font-bold text-center'>Action Movies</h2>
-        {actionMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </section>
+      {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
+      {/* TODO: - add search component // TODO: - maybe we could use the same component for categories and genre */}
+      <MoviesByCategory id={1} />
+      <MoviesByCategory id={2} />
+      <MoviesByCategory id={3} />
+      <MoviesByGenre id={28} />
+      <MoviesByGenre id={35} />
+      <MoviesByGenre id={18} />
+      <MoviesByGenre id={878} />
     </main>
   );
 };

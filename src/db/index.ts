@@ -12,8 +12,8 @@ export const getAllMovies = () => {
   return db.select().from(movies).all();
 };
 
-export const getMoviesByIds = (ids: number[]) => {
-  return db.select().from(movies).where(inArray(movies.id, ids));
+export const getMoviesByIds = (ids: number[], {limit = 0}) => {
+  return db.select().from(movies).where(inArray(movies.id, ids)).limit(limit)
 };
 
 export const addMovie = (movie: MovieType) => {
