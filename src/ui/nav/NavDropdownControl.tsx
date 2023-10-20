@@ -3,9 +3,9 @@
 import {useState} from "react";
 import {NavDropdown} from "@/ui/nav/NavDropdown";
 
-const segments = [
-  { id: 1, name: 'categories' },
-  { id: 2, name: 'genres' },
+const dropdowns = [
+  { id: 1, name: 'Categories', urlSegment: 'categories' },
+  { id: 2, name: 'Genres', urlSegment: 'genres' },
 ];
 
 interface INavDropdownControlProps {
@@ -28,8 +28,8 @@ export const NavDropdownControl = ({items}: INavDropdownControlProps) => {
 
   return (
     <>
-      {segments.map((segment) => (
-        <NavDropdown items={items[segment.name]} key={segment.id} label={segment.name} urlSegment={segment.name} active={active === segment.name} onButtonClick={toggleActive} onLinkClick={clearActive} />
+      {dropdowns.map((dropdown) => (
+        <NavDropdown items={items[dropdown.urlSegment]} key={dropdown.id} label={dropdown.name} urlSegment={dropdown.urlSegment} active={active === dropdown.urlSegment} onButtonClick={toggleActive} onLinkClick={clearActive} />
       ))}
       {/*<NavDropdown label="Categories" urlSegment="categories" active={active === "categories"} onButtonClick={toggleActive} />*/}
       {/*<NavDropdown label="Genres" urlSegment="genres" active={active === "genres"} onButtonClick={toggleActive} />*/}
