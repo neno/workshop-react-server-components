@@ -5,6 +5,7 @@ import Image from "next/image";
 import {ButtonGroup} from "@/ui/ButtonGroup";
 import {getImageUrl} from "@/lib/helpers";
 import {MovieType} from "@/db/schema";
+import {Tab, Tabs} from "@/ui/Tabs";
 
 export interface IModal {
   isOpen: boolean;
@@ -39,13 +40,20 @@ export const PreviewModal: FC<IModal> = ({movie, isOpen, handleClose}) => {
           </button>
           <div className="relative aspect-video before:absolute before:inset-0 before:bg-gradient-to-t before:from-neutral-900 before:to-transparent z-0">
             <Image className="object-cover -z-10" fill src={getImageUrl(movie.backdropPath)} alt={movie.title || ""} />
-            <ButtonGroup className="absolute bottom-12 left-12" />
+            <div className="absolute bottom-12 left-12">
+              <h2 className="text-2xl md:text-4xl font-bold text-neutral-100">{movie.title}</h2>
+              <ButtonGroup className="mt-4" />
+            </div>
           </div>
-          <div className="p-4 md:p-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-100">{movie.title}</h2>
-            <p className="text-neutral-100">{movie.overview}</p>
+            <div className="p-4 md:p-6">
+            <Tabs>
+              <Tab name="Overview">
+                <p className="text-neutral-100">{movie.overview}</p>
+                <pre>{JSON.stringify(movie, null, 2)}</pre>
+              </Tab>
+              <Tab name="Comments">Here go comments</Tab>
+            </Tabs>
           </div>
-          <pre>{JSON.stringify(movie, null, 2)}</pre>
         </div>
       </div>
     </ReactPortal>
