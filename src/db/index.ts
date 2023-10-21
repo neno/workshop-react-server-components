@@ -2,7 +2,7 @@ import { drizzle, BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 import { CategoryType, GenreType, MovieType, categories, genres, movies } from "@/db/schema";
 import * as schema from "@/db/schema";
-import { eq, inArray, like } from 'drizzle-orm';
+import { eq, inArray, isNotNull, like, ne, not } from 'drizzle-orm';
 
 
 const sqlite = new Database("src/db/data.db", { fileMustExist: true });
