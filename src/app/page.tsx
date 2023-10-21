@@ -1,9 +1,9 @@
 import { searchByTitle } from '@/lib/api';
 import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
 import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
+import {Search} from "@/ui/Search";
 
 const Home = async () => {
-  const searchMovies = await searchByTitle('father');
 
   return (
     <main className='container mx-auto'>
