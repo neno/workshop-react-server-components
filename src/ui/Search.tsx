@@ -3,13 +3,15 @@
 import {MagnifyingGlassIcon} from "@heroicons/react/24/solid";
 import {useRouter, useSearchParams} from "next/navigation";
 import {useEffect, useState} from "react";
-import {useDebounce} from "use-debounce";
+import {useDebouncedCallback} from "use-debounce";
 
 export const Search = ({ className }: { className?: string }) => {
   const router = useRouter();
   const searchParams = useSearchParams()
   const [query, setQuery] = useState(searchParams.get('q') || '')
-  const [value] = useDebounce(query, 500)
+  const debounced = useDebouncedCallback((value) => {
+    setQuery(value);
+  }, 500)
 
   useEffect(
     () => {
@@ -33,8 +35,8 @@ export const Search = ({ className }: { className?: string }) => {
             className="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
             placeholder="Search"
             type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            defaultValue={query}
+            onChange={(e) => debounced(e.target.value)}
           />
         </div>
       </fieldset>
