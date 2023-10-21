@@ -38,7 +38,7 @@ export const PreviewModal: FC<IModal> = ({movie, isOpen, handleClose}) => {
           </button>
           <div className="relative aspect-video before:absolute before:inset-0 before:bg-gradient-to-t before:from-neutral-900 before:to-transparent z-0">
             <Image className="object-cover -z-10" fill src={getImageUrl(movie.backdropPath)} alt={movie.title || ""} />
-            <ButtonGroup className="absolute bottom-12 left-12" />
+            <ButtonGroup movieId={movie.id} className="absolute bottom-12 left-12" />
           </div>
           <div className="p-4 md:p-6">
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-100">{movie.title}</h2>
