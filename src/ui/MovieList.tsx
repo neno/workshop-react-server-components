@@ -3,7 +3,7 @@ import { MovieType } from '@/db/schema';
 import { ShowAll } from '@/ui/ShowAll';
 
 interface IMovieListProps {
-  movies: Pick<MovieType, 'id' | 'posterPath' | 'title'>[];
+  movies: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>[];
   pageUrl?: string;
 }
 
