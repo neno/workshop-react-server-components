@@ -1,6 +1,6 @@
 import { NavLink } from './NavLink';
-import {NavDropdownControl} from "@/ui/nav/NavDropdownControl";
-import {getAllCategories, getAllGenres} from "@/db";
+import { NavDropdownControl } from '@/ui/nav/NavDropdownControl';
+import { getAllCategories, getAllGenres } from '@/db';
 
 export async function Nav() {
   const categories = await getAllCategories();
@@ -10,7 +10,9 @@ export async function Nav() {
   return (
     <nav className='flex gap-8'>
       <NavLink href='/'>Home</NavLink>
-      <NavDropdownControl items={items} /> {/* TODO: - think how to pass in navdropdown as children so they can be RSC */}
+      <NavDropdownControl items={items} />{' '}
+      {/* TODO: - think how to pass in navdropdown as children so they can be RSC */}
+      <NavLink href='/search'>Search</NavLink>
     </nav>
   );
 }

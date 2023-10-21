@@ -1,10 +1,9 @@
 import { searchByTitle } from '@/lib/api';
 import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
 import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
+import { SearchForm } from '@/ui/SearchForm';
 
 const Home = async () => {
-  const searchMovies = await searchByTitle('father');
-
   return (
     <>
       <h1 className='text-6xl font-bold text-center'>Movies</h1>

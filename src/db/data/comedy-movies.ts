@@ -398,23 +398,6 @@ export const comedyMovies: TmdbMovieItem[] = [
   },
   {
     adult: false,
-    backdrop_path: '/hkx6p7bTw2dOs4nSk6ZGTnEjCjW.jpg',
-    genre_ids: [35, 18],
-    id: 37265,
-    original_language: 'it',
-    original_title: 'Così fan tutte',
-    overview:
-      'After five years of marriage, Diana discovers the joys of adultery, claiming that she can save her failing relationship through betrayal.',
-    popularity: 176.332,
-    poster_path: '/u4QZQ0QU2jf5H5qaBRRdGrz7dmy.jpg',
-    release_date: '1992-02-21',
-    title: 'All Ladies Do It',
-    video: false,
-    vote_average: 4.8,
-    vote_count: 337,
-  },
-  {
-    adult: false,
     backdrop_path: '/hrqPHNioMoCVyyh8FCcaINTv6Nu.jpg',
     genre_ids: [35],
     id: 1172676,
