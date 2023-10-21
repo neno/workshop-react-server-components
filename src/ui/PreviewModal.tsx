@@ -27,6 +27,7 @@ export const PreviewModal: FC<IModal> = ({movie, isOpen, handleClose}) => {
   return (
     <ReactPortal wrapperId="react-portal-modal-container">
       <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto pt-16 h-full">
+        <div className="fixed inset-0 bg-neutral-900 opacity-80" onClick={handleClose} />
         <div className="container relative flex-1 max-w-3xl bg-neutral-900 rounded-md overflow-hidden shadow-[0px_3px_10px_rgba(0,0,0,0.75)]">
           <button
             type="button"
