@@ -1,4 +1,4 @@
-import { getCategoryById, getGenreById, getMoviesByIds, searchMoviesByTitle } from '@/db';
+import {addMovieToCategory as dbAddMovieToCategory, getCategoryById, getGenreById, getMoviesByIds, searchMoviesByTitle} from '@/db';
 import { MovieType } from '@/db/schema';
 
 export async function getMoviesByCategory(id: number, options = {}) {
@@ -28,4 +28,15 @@ export async function searchByTitle(title: string): Promise<MovieType[]> {
     return [];
   }
   return await searchMoviesByTitle(title);
+}
+
+export async function addMovieToCategory(movieId: number, categoryId: number)  {
+  const res = await getCategoryById(categoryId);
+  if (!res.length) {
+    return null;
+  }
+  const movieIds = res[0].movieIds.split(',').map(Number);
+  const updatedMovieIds = [...movieIds, movieId].join(',');
+
+  dbAddMovieToCategory(updatedMovieIds, categoryId);
 }

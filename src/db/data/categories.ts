@@ -6,6 +6,7 @@ export const categories = [
   { id: 1, name: 'Popular' },
   { id: 2, name: 'Top-rated' },
   { id: 3, name: 'Upcoming' },
+  { id: 4, name: 'Watchlist' },
 ];
 
 export const categoryMoviesMap = new Map<number, number[]>();
