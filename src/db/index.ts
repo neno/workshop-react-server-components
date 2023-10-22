@@ -49,3 +49,7 @@ export const searchMoviesByTitle = async (title: string) => {
   // return await db.select().from(movies).where(like(movies.title, "%girl%"));
   return db.select().from(movies).where(like(movies.title, `%${title}%`));
 }
+
+export const addMovieToCategory = async (movieIds: string, categoryId: number) => {
+  return db.update(categories).set({ movieIds: movieIds }).where(eq(categories.id, categoryId));
+};
