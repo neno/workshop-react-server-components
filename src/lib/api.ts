@@ -1,4 +1,4 @@
-import {addMovieToCategory as dbAddMovieToCategory, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
+import {addMovieToCategory as dbAddMovieToCategory, getAllGenres, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
 import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
 import { MovieType } from '@/db/schema';
 import { log } from 'console';
@@ -23,6 +23,10 @@ export async function getMoviesByGenre(id: number, options = {}) {
 
   const movieIds = res[0].movieIds.split(',').map(Number);
   return await getMoviesByIds(movieIds, options);
+}
+
+export async function getGenres() {
+  return await getAllGenres();
 }
 
 export async function searchByTitle(title: string): Promise<MovieType[]> {

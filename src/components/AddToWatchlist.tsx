@@ -4,19 +4,16 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 type AddToWatchlistProps = {
   movieId: number;
-  handleSubmit: (movieId: number) => void;
   isInWatchlist: boolean;
   children?: React.ReactNode;
 };
 
 export const WatchlistButton = ({
   movieId,
-  handleSubmit,
   isInWatchlist,
-  children,
 }: AddToWatchlistProps) => {
   const handleFormSubmit = async () => {
-    const res = await handleSubmit(movieId);
+    console.log('handleFormSubmit', movieId);
   };
 
   return (

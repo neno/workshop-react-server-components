@@ -1,21 +1,13 @@
-// import { removeMovieFromCategory } from '@/lib/api';
 import { getImageUrl } from '@/lib/helpers';
 import Image from 'next/image';
+import { MovieType } from '@/db/schema';
 import { WatchlistButton } from '@/components/AddToWatchlist';
-import { PlusIcon } from '@heroicons/react/24/outline';
-import { MinusIcon } from '@heroicons/react/24/outline';
-
-// import { addMovieToCategory } from '@/lib/api';
-// import { revalidatePath } from 'next/cache';
 
 type MovieHeroProps = {
-  movie: any;
-  movieIdsInWatchlist: any;
-  addToWatchlist: (movieId: number) => void;
-  removeFromWatchlist: (movieId: number) => void;
+  movie: MovieType;
 }
 
-export function MovieHero({ movie, movieIdsInWatchlist, addToWatchlist, removeFromWatchlist }: MovieHeroProps) {
+export function MovieHero({ movie }: MovieHeroProps) {
   return (
     <div className='relative aspect-3/1 before:absolute before:inset-0 before:bg-gradient-to-t before:from-neutral-900 before:to-transparent z-0'>
         <Image
@@ -32,16 +24,16 @@ export function MovieHero({ movie, movieIdsInWatchlist, addToWatchlist, removeFr
             <p className='basis-1/2'>{movie.overview}</p>
             <div className='basis-1/2'>
               <div className='flex justify-end'>
-                <WatchlistButton
+              <WatchlistButton
                   movieId={movie.id}
-                  handleSubmit={movieIdsInWatchlist ? removeFromWatchlist : addToWatchlist}
-                >
-                  {movieIdsInWatchlist.includes(movie.id) ? (
-                    <MinusIcon className='h-6 w-6' aria-hidden='true' />
-                  ) : (
-                    <PlusIcon className='h-6 w-6' aria-hidden='true' />
-                  )}
-                </WatchlistButton>
+                  isInWatchlist={false}
+                />
+                {/* <ButtonGroup movieId={movie.id} /> */}
+                {/* <WatchlistButton
+                  movieId={movie.id}
+                  handleSubmit={handleSubmit}
+                  isInWatchlist={isInWatchlist}
+                /> */}
               </div>
             </div>
           </div>
