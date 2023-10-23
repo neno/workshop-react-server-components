@@ -2,7 +2,7 @@ import { drizzle, BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 import { CategoryType, GenreType, MovieType, categories, genres, movies, reviews } from "@/db/schema";
 import * as schema from "@/db/schema";
-import { eq, inArray, isNotNull, like, ne, not } from 'drizzle-orm';
+import { eq, inArray, like, not } from 'drizzle-orm';
 
 
 const sqlite = new Database("src/db/data.db", { fileMustExist: true });
@@ -25,7 +25,7 @@ export const addMovie = (movie: MovieType) => {
 };
 
 export const getAllGenres = () => {
-  return db.select().from(genres).all();
+  return db.select().from(genres).where(not(eq(genres.movieIds, '')));
 };
 
 export const addGenre = (genre: GenreType) => {
