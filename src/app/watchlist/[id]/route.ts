@@ -15,7 +15,7 @@ export async function POST(request: Request, { params: { id } }: Params) {
 
   await addMovieToCategory(id, WATCHLIST_ID);
   revalidatePath(`/`);
-  revalidatePath(`/movies/${id}`);
+
   revalidatePath(`/categories/${WATCHLIST_ID}`);
   return NextResponse.json({ success: true });
 }

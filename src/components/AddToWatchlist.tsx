@@ -2,7 +2,6 @@
 
 import { WATCHLIST_ID } from '@/constants';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { revalidatePath } from 'next/cache';
 import { use, useEffect, useRef, useState } from 'react';
 
 type AddToWatchlistProps = {
@@ -13,6 +12,7 @@ type AddToWatchlistProps = {
 export const AddToWatchlist = ({
   movieId,
   isInWatchlist,
+  revalidate,
 }: AddToWatchlistProps) => {
   // const isInitiallyAdded = useRef(isInWatchlist);
 
@@ -28,7 +28,8 @@ export const AddToWatchlist = ({
   const handleClick = async () => {
     setIsAdded((prev) => !prev);
     // fetch(`/watchlist/${movieId}`, { method:'POST'});
-    fetch(`/watchlist/${movieId}`, { method: isAdded ? 'DELETE' : 'POST' });
+    await fetch(`/watchlist/${movieId}`, { method: isAdded ? 'DELETE' : 'POST' });
+    revalidate();
   };
 
   // useEffect(() => {
