@@ -25,6 +25,11 @@ export const AddToWatchlist = ({
 
   const [isAdded, setIsAdded] = useState(isInWatchlist);
 
+  // useEffect(() => {
+  //   const isMemberOfWatchlist = use(`/watchlist/${movieId}`); 
+  //   const isMemberOfWatchlist = await use(`/watchlist/${movieId}`);
+  // }, [])
+
   const handleClick = async () => {
     setIsAdded((prev) => !prev);
     // fetch(`/watchlist/${movieId}`, { method:'POST'});
