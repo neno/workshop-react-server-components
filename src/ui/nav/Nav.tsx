@@ -1,7 +1,12 @@
 import { NavLink } from './NavLink';
-import { NavDropdownControl } from '@/ui/nav/NavDropdownControl';
 import { getAllCategories, getAllGenres } from '@/db';
 import { Stack } from '../Stack';
+import {NavDropdown} from "@/ui/nav/NavDropdown";
+
+const dropdowns = [
+  { id: 1, name: 'Categories', urlSegment: 'categories' },
+  { id: 2, name: 'Genres', urlSegment: 'genres' },
+];
 
 export async function Nav() {
   const categories = await getAllCategories();
@@ -13,14 +18,15 @@ export async function Nav() {
       <Stack className='gap-6'>
         <div className='flex gap-8 px-4 py-2 rounded-md justify-center bg-neutral-800'>
           <NavLink href='/'>Home</NavLink>
-          <NavDropdownControl items={items} />{' '}
-          {/* TODO: - think how to pass in navdropdown as children so they can be RSC */}
+          {dropdowns.map((dropdown) => (
+            <NavDropdown
+              items={items[dropdown.urlSegment as keyof typeof items]}
+              key={dropdown.id}
+              label={dropdown.name}
+              urlSegment={dropdown.urlSegment}
+            />
+          ))}
           <NavLink href='/search'>Search</NavLink>
-        </div>
-        <div className='flex gap-8 justify-center '>
-        <NavLink href='/search'>Action</NavLink> |
-        <NavLink href='/search'>Comedy</NavLink> |
-        <NavLink href='/search'>Sci-fi</NavLink>
         </div>
       </Stack>
     </nav>

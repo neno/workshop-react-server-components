@@ -7,7 +7,8 @@ import styles from './NavLink.module.css';
 import { clsxm } from '@/lib/helpers';
 
 interface NavLinkProps {
-  href: string;
+  href?: string;
+  urlSegment?: string;
   className?: string;
   children: React.ReactNode;
 }
@@ -15,17 +16,21 @@ interface NavLinkProps {
 export const NavLink: FC<NavLinkProps> = ({
   href,
   children,
-  className = 'tab',
+  urlSegment,
 }) => {
   const segment = useSelectedLayoutSegment();
-  const active = href === `/${segment ?? ''}`;
+  const active = href === `/${segment ?? ''}` || urlSegment === segment;
+  const Element = href ? Link : 'span';
 
   return (
-    <Link
-      href={href}
-      className={active ? [styles.tab, styles.activeTab].join(' ') : styles.tab }
+    <Element
+      href={href as string}
+      className={clsxm(
+        'text-white px-3 py-2 rounded hover:bg-white hover:text-gray-700 block group-hover:pb-4 group-hover:-mb-2 group-hover:rounded-b-none group-hover:text-gray-700 group-hover:bg-white',
+        active && 'text-white bg-purple-900'
+      )}
     >
       {children}
-    </Link>
+    </Element>
   );
 };
