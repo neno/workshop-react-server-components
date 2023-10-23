@@ -1,7 +1,6 @@
 import { getImageUrl } from '@/lib/helpers';
 import Image from 'next/image';
 import { MovieType } from '@/db/schema';
-import { WatchlistButton } from '@/components/AddToWatchlist';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 type MovieHeroProps = {
@@ -10,7 +9,7 @@ type MovieHeroProps = {
   handleSubmit: () => void;
 }
 
-export function MovieHero({ movie, isInWatchlist, handleSubmit }: MovieHeroProps) {
+export async function MovieHero({ movie, isInWatchlist, handleSubmit }: MovieHeroProps) {
   return (
     <div className='relative aspect-3/1 before:absolute before:inset-0 before:bg-gradient-to-t before:from-neutral-900 before:to-transparent z-0'>
         <Image

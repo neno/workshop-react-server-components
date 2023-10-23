@@ -26,14 +26,11 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
   const addToWatchlist = async (movieId: number) => {
     'use server';
     addMovieToCategory(movieId, 4);
-    revalidatePath('/');
   };
 
   const removeFromWatchlist = async (movieId: number) => {
     'use server';
     removeMovieFromCategory(movieId, 4);
-    revalidatePath('/');
-    revalidatePath(`/movies/${movieId}`);
   };
 
   const handleSubmit = async () => {
@@ -44,7 +41,7 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
     } else {
       await addToWatchlist(movie.id);
     }
-
+    revalidatePath('/');
     revalidatePath(`/movies/${movie.id}`)
   };
 
