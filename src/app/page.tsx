@@ -1,5 +1,5 @@
-import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
-import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
+import { MoviesByCategory } from '../components/MoviesByCategory';
+import { MoviesByGenre } from '../components/MoviesByGenre';
 
 const Home = async () => {
   return (
