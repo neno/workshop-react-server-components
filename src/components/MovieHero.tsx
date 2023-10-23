@@ -31,9 +31,8 @@ export async function MovieHero({ movie, isInWatchlist, handleSubmit }: MovieHer
                   <button
                     type='submit'
                     className='rounded-full bg-transparent text-primary border opacity-70 hover:opacity-90 p-2 md:p-4'
-                    title='Add to Watchlist'
+                    title={isInWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}
                   >
-                    <span className='sr-only'>Add to Watchlist</span>
                     {isInWatchlist ? (
                       <MinusIcon className='h-6 w-6' aria-hidden='true' />
                     ) : (
