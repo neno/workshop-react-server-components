@@ -11,9 +11,11 @@ interface IMovieListProps {
 export const MovieList = ({ movies, priorityImage, pageUrl }: IMovieListProps) => {
   return (
     <div className='grid grid-cols-6 gap-4 mt-8'>
-      {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} priorityImage={priorityImage}/>
-      ))}
+      {movies.length > 0 && (
+        movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} priorityImage={priorityImage}/>
+        ))
+      )}
       {pageUrl && <ShowAll href={pageUrl} />}
     </div>
   );
