@@ -1,6 +1,6 @@
 "use server"
 
-import { addMovieToCategory} from '@/lib/api';
+import { addMovieToCategory, removeMovieFromCategory} from '@/lib/api';
 import {revalidatePath} from "next/cache";
 
 export const addMovieIdToWatchlist = (movieId: number) => {
@@ -9,3 +9,11 @@ export const addMovieIdToWatchlist = (movieId: number) => {
   addMovieToCategory(movieId, 4);
   revalidatePath("/")
 }
+
+export const addToWatchlist = async (movieId: number) => {
+  addMovieToCategory(movieId, 4);
+};
+
+export const removeFromWatchlist = async (movieId: number) => {
+  removeMovieFromCategory(movieId, 4);
+};

@@ -1,7 +1,6 @@
 import {addMovieToCategory as dbAddMovieToCategory, getAllGenres, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
 import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
 import { MovieType } from '@/db/schema';
-import { log } from 'console';
 
 export async function getMoviesByCategory(id: number, options = {}) {
   const res = await getCategoryById(id);

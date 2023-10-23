@@ -1,15 +1,14 @@
 import {
   getMoviesByCategory,
   loadMovieById,
-  removeMovieFromCategory,
 } from '@/lib/api';
 import { Stack } from '@/ui/Stack';
 import { Suspense } from 'react';
 import { Reviews } from '@/components/Reviews';
-import { addMovieToCategory } from '@/lib/api';
 import { revalidatePath } from 'next/cache';
 import { MovieHero } from './MovieHero';
 import { Deflist } from '@/components/Deflist';
+import { addToWatchlist, removeFromWatchlist } from '@/app/actions';
 
 async function MoviePage({ params: { id } }: { params: { id: number } }) {
   const movie = await loadMovieById(id);
@@ -23,16 +22,6 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
     return <div>Movie not found</div>;
   }
 
-  const addToWatchlist = async (movieId: number) => {
-    'use server';
-    addMovieToCategory(movieId, 4);
-  };
-
-  const removeFromWatchlist = async (movieId: number) => {
-    'use server';
-    removeMovieFromCategory(movieId, 4);
-  };
-
   const handleSubmit = async () => {
     'use server';
 
@@ -42,7 +31,7 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
       await addToWatchlist(movie.id);
     }
     revalidatePath('/');
-    revalidatePath(`/movies/${movie.id}`)
+    revalidatePath(`/movies/${movie.id}`);
   };
 
   return (
