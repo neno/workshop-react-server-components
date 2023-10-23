@@ -13,7 +13,8 @@ export const WatchlistButton = ({
   isInWatchlist,
 }: AddToWatchlistProps) => {
   const handleFormSubmit = async () => {
-    console.log('handleFormSubmit', movieId);
+
+    console.log('handleFormSubmit', isInWatchlist);
   };
 
   return (
