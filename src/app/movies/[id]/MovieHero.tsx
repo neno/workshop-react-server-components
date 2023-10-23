@@ -15,6 +15,7 @@ export function MovieHero({ movie }: MovieHeroProps) {
           fill
           src={getImageUrl(movie.backdropPath)}
           alt={movie.title || ''}
+          priority={true}
         />
         <div className='absolute top-0 left-0 w-full h-full flex flex-col gap-4 justify-end p-8'>
           <h1 className='text-2xl md:text-4xl font-bold text-neutral-100'>
