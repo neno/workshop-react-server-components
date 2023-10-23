@@ -25,7 +25,7 @@ export default function RootLayout({
             <Nav />
           </Container>
         </header>
-        <main className='container mx-auto mt-16'>
+        <main className='container mx-auto'>
           <Container>{children}</Container>
         </main>
         <footer className='container mx-auto my-16'>
