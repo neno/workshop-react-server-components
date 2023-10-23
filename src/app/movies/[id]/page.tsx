@@ -6,7 +6,7 @@ import { Stack } from '@/ui/Stack';
 import { Suspense } from 'react';
 import { Reviews } from '@/components/Reviews';
 import { revalidatePath } from 'next/cache';
-import { MovieHero } from './MovieHero';
+import { MovieHero } from '../../../components/MovieHero';
 import { Deflist } from '@/components/Deflist';
 import { addToWatchlist, removeFromWatchlist } from '@/app/actions';
 
@@ -36,7 +36,7 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
 
   return (
     <Stack>
-      <MovieHero movie={movie} isInWatchlist={isInWatchlist} handleSubmit={handleSubmit} />
+      <MovieHero movie={movie} isInWatchlist={isInWatchlist} />
       <div className='grid grid-cols-2 gap-16'>
         <section>
           <h2>Reviews</h2>

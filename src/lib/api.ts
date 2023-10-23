@@ -1,4 +1,4 @@
-import {addMovieToCategory as dbAddMovieToCategory, getAllGenres, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
+import {updateCategoryMovieIds, getAllGenres, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
 import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
 import { MovieType } from '@/db/schema';
 
@@ -36,6 +36,7 @@ export async function searchByTitle(title: string): Promise<MovieType[]> {
 }
 
 export async function addMovieToCategory(movieId: number, categoryId: number)  {
+  const movieIdNumber = Number(movieId);
   console.log('addMovieToCategory', movieId, categoryId);
   
   const res = await getCategoryById(categoryId);
@@ -46,8 +47,8 @@ export async function addMovieToCategory(movieId: number, categoryId: number)  {
   const { movieIds } = category;
 
 
-  const updatedMovieIds = [...movieIds.split(',').map(Number), movieId].join(',');
-  return dbAddMovieToCategory(updatedMovieIds, categoryId);
+  const updatedMovieIds = [...movieIds.split(',').filter(id => Number(id) !== movieIdNumber).map(Number), movieIdNumber].join(',');
+  return updateCategoryMovieIds(updatedMovieIds, categoryId);
 }
 
 export async function removeMovieFromCategory(movieId: number, categoryId: number)  {
@@ -58,8 +59,10 @@ export async function removeMovieFromCategory(movieId: number, categoryId: numbe
   const [category] = res;
   const { movieIds } = category;
 
-  const updatedMovieIds = movieIds.split(',').map(Number).filter(id => id !== movieId).join(',');
-  return dbAddMovieToCategory(updatedMovieIds, categoryId);
+  const updatedMovieIds = movieIds.split(',').map(Number).filter(id => id !== Number(movieId)).join(',');
+  console.log('removeMovieFromCategory', movieId, categoryId, updatedMovieIds);
+  
+  return updateCategoryMovieIds(updatedMovieIds, categoryId);
 }
 
 const fetchData = async (path: string, params?: string) => {
