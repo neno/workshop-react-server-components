@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import { NavDropdown } from '@/ui/nav/NavDropdown';
 
 const dropdowns = [
@@ -16,15 +13,7 @@ interface INavDropdownControlProps {
 }
 
 export const NavDropdownControl = ({ items }: INavDropdownControlProps) => {
-  const [active, setActive] = useState<string | null>(null);
 
-  const toggleActive = (urlSegment: string) => {
-    setActive(active === urlSegment ? null : urlSegment);
-  };
-
-  const clearActive = () => {
-    setActive(null);
-  };
 
   return (
     <>
@@ -35,9 +24,6 @@ export const NavDropdownControl = ({ items }: INavDropdownControlProps) => {
           key={dropdown.id}
           label={dropdown.name}
           urlSegment={dropdown.urlSegment}
-          active={active === dropdown.urlSegment}
-          onButtonClick={toggleActive}
-          clearActive={clearActive}
         />
       ))}
     </>

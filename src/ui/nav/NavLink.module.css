@@ -1,8 +1,7 @@
 .tab {
-  @apply text-white px-3 py-1 rounded hover:bg-black;
+  @apply text-white px-3 py-2 rounded hover:bg-white hover:text-gray-700;
 }
 
 .activeTab {
-  @apply text-white bg-purple-700;
-  @apply hover:bg-purple-900;
+  @apply text-white bg-neutral-900;
 }

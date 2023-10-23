@@ -1,36 +1,27 @@
 import {NavDropdownLink} from "@/ui/nav/NavDropdownLink";
+import styles from './NavLink.module.css';
 import {clsx} from "clsx";
+import {clsxm} from "@/lib/helpers";
 
 interface INavDropdownProps {
   items: { id: number, name: string }[],
   label: string,
-  active?: boolean
   urlSegment: string,
-  onButtonClick: (urlSegment: string) => void
-  clearActive: () => void
 }
 
-export const NavDropdown = ({ items, label, urlSegment, active, onButtonClick, clearActive }: INavDropdownProps) => {
-  const handleButtonClick = () => {
-    onButtonClick(urlSegment)
-  }
-
-  const handleLinkClick = () => {
-    clearActive()
-  }
+export const NavDropdown = ({ items, label, urlSegment  }: INavDropdownProps) => {
 
   return (
-    <div className="relative z-50">
-      <button className="" type="button" onClick={handleButtonClick}>
+    <div className="relative z-50 group">
+      <span className={clsxm(styles.tab, 'block !pb-4 !rounded-b-none -mb-2')}>
         <span className="sr-only">Open </span>{label}
-      </button>
+      </span>
       <ul className={clsx(
-          "absolute top-full z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
-          active ? 'block' : 'hidden'
+          "absolute top-full z-10 mt-2 w-48 rounded-md rounded-t-none bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden group-hover:block",
         )}>
         {items.map((item) => (
           <li key={item.id}>
-            <NavDropdownLink onClick={handleLinkClick} label={item.name} href={`/${urlSegment}/${item.id}`} />
+            <NavDropdownLink label={item.name} href={`/${urlSegment}/${item.id}`} />
           </li>
         ))}
       </ul>
