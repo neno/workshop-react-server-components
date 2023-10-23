@@ -9,8 +9,8 @@ const Home = async () => {
       <h1 className='text-6xl font-bold text-center'>Movies</h1>
       {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
       {/* TODO: - add search component // TODO: - maybe we could use the same component for categories and genre */}
-      <MoviesByCategory id={1} />
       <MoviesByCategory id={4} />
+      <MoviesByCategory id={1} />
       <MoviesByCategory id={2} />
       <MoviesByCategory id={3} />
       <MoviesByGenre id={28} />

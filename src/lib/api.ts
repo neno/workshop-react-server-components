@@ -1,5 +1,7 @@
-import {addMovieToCategory as dbAddMovieToCategory, getCategoryById, getGenreById, getMoviesByIds, searchMoviesByTitle} from '@/db';
+import {addMovieToCategory as dbAddMovieToCategory, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
+import { TmdbMovieItem } from '@/db/data/tmdbMovieItem.types';
 import { MovieType } from '@/db/schema';
+import { log } from 'console';
 
 export async function getMoviesByCategory(id: number, options = {}) {
   const res = await getCategoryById(id);
@@ -31,12 +33,46 @@ export async function searchByTitle(title: string): Promise<MovieType[]> {
 }
 
 export async function addMovieToCategory(movieId: number, categoryId: number)  {
+  console.log('addMovieToCategory', movieId, categoryId);
+  
   const res = await getCategoryById(categoryId);
   if (!res.length) {
     return null;
   }
-  const movieIds = res[0].movieIds.split(',').map(Number);
-  const updatedMovieIds = [...movieIds, movieId].join(',');
+  const [category] = res;
+  const { movieIds } = category;
 
-  dbAddMovieToCategory(updatedMovieIds, categoryId);
+
+  const updatedMovieIds = [...movieIds.split(',').map(Number), movieId].join(',');
+  return dbAddMovieToCategory(updatedMovieIds, categoryId);
+}
+
+export async function removeMovieFromCategory(movieId: number, categoryId: number)  {
+  const res = await getCategoryById(categoryId);
+  if (!res.length) {
+    return null;
+  }
+  const [category] = res;
+  const { movieIds } = category;
+
+  const updatedMovieIds = movieIds.split(',').map(Number).filter(id => id !== movieId).join(',');
+  return dbAddMovieToCategory(updatedMovieIds, categoryId);
+}
+
+const fetchData = async (path: string, params?: string) => {
+  const url = `https://api.themoviedb.org/3/${path}?api_key=00f3f32198696caff437631c007a7548${params ? `&${params}` : ''}`;
+  console.log('fetchData - api', url);
+  
+  const res = await fetch(url);
+  return await res.json();
+}
+
+export async function fetchReviewsByMovieId(id: number): Promise<TmdbMovieItem[] | undefined> {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=00f3f32198696caff437631c007a7548`);
+  return await res.json();
+}
+
+export async function loadMovieById(id: number): Promise<MovieType | undefined> {
+  const [movie] = await getMovieById(id)
+  return movie;
 }

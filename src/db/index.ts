@@ -1,6 +1,6 @@
 import { drizzle, BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
-import { CategoryType, GenreType, MovieType, categories, genres, movies } from "@/db/schema";
+import { CategoryType, GenreType, MovieType, categories, genres, movies, reviews } from "@/db/schema";
 import * as schema from "@/db/schema";
 import { eq, inArray, isNotNull, like, ne, not } from 'drizzle-orm';
 
@@ -10,6 +10,10 @@ export const db: BetterSQLite3Database<typeof schema> = drizzle(sqlite, { schema
 
 export const getAllMovies = () => {
   return db.select().from(movies).all();
+};
+
+export const getMovieById = (id: number) => {
+  return db.select().from(movies).where(eq(movies.id, id));
 };
 
 export const getMoviesByIds = (ids: number[], {limit = 0}) => {
@@ -52,4 +56,8 @@ export const searchMoviesByTitle = async (title: string) => {
 
 export const addMovieToCategory = async (movieIds: string, categoryId: number) => {
   return db.update(categories).set({ movieIds: movieIds }).where(eq(categories.id, categoryId));
+};
+
+export const addReview = (review: schema.InsertReviewType) => {
+  return db.insert(reviews).values(review).execute();
 };

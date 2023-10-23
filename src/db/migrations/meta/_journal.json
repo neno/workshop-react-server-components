@@ -29,6 +29,20 @@
       "when": 1697756927016,
       "tag": "0003_cool_talon",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1697984568964,
+      "tag": "0004_crazy_black_bird",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1697984650091,
+      "tag": "0005_gifted_madame_web",
+      "breakpoints": true
     }
   ]
 }
