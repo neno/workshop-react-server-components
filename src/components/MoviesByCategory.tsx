@@ -16,12 +16,14 @@ export const MoviesByCategory = async ({
 }: IMoviesByCategoryProps) => {
   const [category] = await getCategoryById(id);
   const movies = await getMoviesByCategory(id, { limit });
+
   return (
-    <Section
-      title={category.name}
-      
-    >
-      <MovieList movies={movies} pageUrl={`/categories/${id}`} priorityImage={priorityImage} />
+    <Section title={category.name}>
+      <MovieList
+        movies={movies}
+        pageUrl={`/categories/${id}`}
+        priorityImage={priorityImage}
+      />
     </Section>
   );
 };
