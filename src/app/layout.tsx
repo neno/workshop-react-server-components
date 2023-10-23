@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
 import { Nav } from '@/ui/nav/Nav';
 import { Container } from '@/ui/Container';
+import { APP_NAME } from '@/constants';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,13 @@ export default function RootLayout({
         <main className='container mx-auto mt-16'>
           <Container>{children}</Container>
         </main>
+        <footer className='container mx-auto my-16'>
+          <Container>
+            <p className='text-center text-neutral-400'>
+              &copy; {new Date().getFullYear()} {APP_NAME}
+            </p>
+          </Container>
+        </footer>
       </body>
     </html>
   );
