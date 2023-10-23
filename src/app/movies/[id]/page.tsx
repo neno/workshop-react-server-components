@@ -22,17 +22,17 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
     return <div>Movie not found</div>;
   }
 
-  const handleSubmit = async () => {
-    'use server';
-
-    if (isInWatchlist) {
-      await removeFromWatchlist(movie.id);
-    } else {
-      await addToWatchlist(movie.id);
-    }
-    revalidatePath('/');
-    revalidatePath(`/movies/${movie.id}`);
-  };
+  // const handleSubmit = async () => {
+  //   'use server';
+  //
+  //   if (isInWatchlist) {
+  //     await removeFromWatchlist(movie.id);
+  //   } else {
+  //     await addToWatchlist(movie.id);
+  //   }
+  //   revalidatePath('/');
+  //   revalidatePath(`/movies/${movie.id}`);
+  // };
 
   return (
     <Stack>

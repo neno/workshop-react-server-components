@@ -4,6 +4,7 @@ import { WATCHLIST_ID } from '@/constants';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { revalidatePath } from 'next/cache';
 import { use, useEffect, useRef, useState } from 'react';
+import {useRouter} from "next/navigation";
 
 type AddToWatchlistProps = {
   movieId: number;
@@ -14,6 +15,7 @@ export const AddToWatchlist = ({
   movieId,
   isInWatchlist,
 }: AddToWatchlistProps) => {
+  const router = useRouter();
   // const isInitiallyAdded = useRef(isInWatchlist);
 
   // const addToWatchlist = async (movieId: number) => {
@@ -23,12 +25,10 @@ export const AddToWatchlist = ({
   //   use(fetch(`/watchlist/${movieId}`, { method: 'DELETE'}));
   // }
 
-  const [isAdded, setIsAdded] = useState(isInWatchlist);
-
   const handleClick = async () => {
-    setIsAdded((prev) => !prev);
     // fetch(`/watchlist/${movieId}`, { method:'POST'});
-    fetch(`/watchlist/${movieId}`, { method: isAdded ? 'DELETE' : 'POST' });
+    await fetch(`/watchlist/${movieId}`, { method: isInWatchlist ? 'DELETE' : 'POST' });
+    router.refresh();
   };
 
   // useEffect(() => {
@@ -47,7 +47,7 @@ export const AddToWatchlist = ({
       onClick={handleClick}
     >
       <span className='sr-only'>Add to Watchlist</span>
-      {isAdded ? (
+      {isInWatchlist ? (
         <MinusIcon className='h-6 w-6' aria-hidden='true' />
       ) : (
         <PlusIcon className='h-6 w-6' aria-hidden='true' />
