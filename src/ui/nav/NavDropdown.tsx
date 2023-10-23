@@ -1,5 +1,4 @@
 import {NavDropdownLink} from "@/ui/nav/NavDropdownLink";
-import {NavDropdownToggle} from "@/ui/nav/NavDropdownToggle";
 import {NavLink} from "@/ui/nav/NavLink";
 
 interface INavDropdownProps {
