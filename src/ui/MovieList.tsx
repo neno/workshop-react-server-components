@@ -17,7 +17,6 @@ export const MovieList = ({ movies, priorityImage, pageUrl }: IMovieListProps) =
         ))
       )}
       {pageUrl && <ShowAll href={pageUrl} />}
-      {movies.length === 0 && <p>Your watchlist is empty. Why don`t you add some movies</p>}
     </div>
   );
 };
