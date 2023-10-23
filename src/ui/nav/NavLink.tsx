@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import { useSelectedLayoutSegment } from 'next/navigation';
+import styles from './NavLink.module.css';
+import { clsxm } from '@/lib/helpers';
 
 interface NavLinkProps {
   href: string;
@@ -21,7 +23,7 @@ export const NavLink: FC<NavLinkProps> = ({
   return (
     <Link
       href={href}
-      className={active ? `${className} tab-active` : className}
+      className={active ? [styles.tab, styles.activeTab].join(' ') : styles.tab }
     >
       {children}
     </Link>

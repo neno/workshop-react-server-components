@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <header className="py-8 bg-neutral-800">
+        <header className="py-8 ">
           <Container>
             <Nav />
           </Container>

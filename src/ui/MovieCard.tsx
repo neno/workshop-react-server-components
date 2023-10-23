@@ -13,10 +13,10 @@ export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
     <Link
       key={movie.id}
       href={`/movies/${movie.id}`}
-      className='relative aspect-[2/3]'
+      className='relative aspect-[2/3] overflow-hidden'
     >
       <Image
-        className='object-cover'
+        className='object-cover hover:scale-[120%] transition-scale duration-500 ease-out'
         sizes='17vw'
         fill
         src={getImageUrl(movie.posterPath)}
