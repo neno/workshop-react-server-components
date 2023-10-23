@@ -30,8 +30,9 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
     } else {
       await addToWatchlist(movie.id);
     }
-    revalidatePath('/');
-    revalidatePath(`/movies/${movie.id}`);
+    
+    revalidatePath('/', 'page');
+    revalidatePath(`/movies/${movie.id}`, 'page');
   };
 
   return (
