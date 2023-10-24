@@ -26,6 +26,7 @@ export async function Nav() {
               urlSegment={dropdown.urlSegment}
             />
           ))}
+          <NavLink href='/movies'>Movies</NavLink>
           <NavLink href='/search'>Search</NavLink>
         </div>
       </Stack>
