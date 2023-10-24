@@ -1,6 +1,7 @@
 import { fetchReviewsByMovieId } from '@/lib/api';
 import { IApiReviewsByMovieResult } from '@/types';
 import { Stack } from '@/ui/Stack';
+import { log } from 'console';
 import ReactMarkdown from 'react-markdown';
 
 const fetchReviews = async (
@@ -15,6 +16,9 @@ export async function Reviews({ movieId }: { movieId: number }) {
   const data = await fetchReviews(movieId);
 
   if (data && data.results) {
+    if (data.results.length === 0) {
+      return <p>No reviews available for this movie.</p>;
+    }
     return (
       <ul className='flex flex-col gap-4'>
         {data.results.map((review) => (
