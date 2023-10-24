@@ -1,16 +1,13 @@
-import { searchByTitle } from '@/lib/api';
-import { MoviesByCategory } from './categories/[id]/movies/MoviesByCategory';
-import { MoviesByGenre } from './genres/[id]/movies/MoviesByGenre';
-import { SearchForm } from '@/ui/SearchForm';
+import { APP_NAME } from '@/constants';
+import { MoviesByCategory } from '../components/MoviesByCategory';
+import { MoviesByGenre } from '../components/MoviesByGenre';
 
 const Home = async () => {
   return (
     <>
-      <h1 className='text-6xl font-bold text-center'>Movies</h1>
-      {/*<GenreSection movies={searchMovies} title="Search Movies" />*/}
-      {/* TODO: - add search component // TODO: - maybe we could use the same component for categories and genre */}
+      <h1 className='text-6xl font-bold text-center'>{APP_NAME}</h1>
+      <MoviesByCategory id={4} priorityImage={true} />
       <MoviesByCategory id={1} />
-      <MoviesByCategory id={4} />
       <MoviesByCategory id={2} />
       <MoviesByCategory id={3} />
       <MoviesByGenre id={28} />

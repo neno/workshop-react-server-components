@@ -1,17 +1,28 @@
-import Image from "next/image";
-import {MovieType} from "@/db/schema";
-import {getImageUrl} from "@/lib/helpers";
-import {PreviewModalWrapper} from "@/ui/PreviewModalWrapper";
+import Image from 'next/image';
+import { MovieType } from '@/db/schema';
+import { getImageUrl } from '@/lib/helpers';
+import Link from 'next/link';
 
 interface IMovieCardProps {
-  movie: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>
+  movie: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>;
+  priorityImage?: boolean;
 }
 
-export const MovieCard = ({ movie } : IMovieCardProps) => {
+export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
   return (
-    <div key={movie.id} className="relative aspect-[2/3]">
-      <Image className="object-cover" sizes="17vw" fill src={getImageUrl(movie.posterPath)} alt={movie.title || ""} />
-      <PreviewModalWrapper movie={movie} />
-    </div>
+    <Link
+      key={movie.id}
+      href={`/movies/${movie.id}`}
+      className='relative aspect-[2/3] overflow-hidden'
+    >
+      <Image
+        className='object-cover hover:scale-[120%] transition-scale duration-500 ease-out'
+        sizes='17vw'
+        fill
+        src={getImageUrl(movie.posterPath)}
+        alt={movie.title || ''}
+        priority={priorityImage}
+      />
+    </Link>
   );
-}
+};

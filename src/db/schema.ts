@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import { integer, real, text, sqliteTable } from 'drizzle-orm/sqlite-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
@@ -42,3 +43,26 @@ export const categories = sqliteTable("categories", {
 
 export const selectCategorySchema = createSelectSchema(categories);
 export type CategoryType = z.infer<typeof selectCategorySchema>;
+
+export const reviews = sqliteTable("reviews", {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  author: text('author').notNull(),
+  content: text('content').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
+  movieId: integer("movie_id")
+      .notNull()
+      .references(() => movies.id, { onDelete: "cascade" }),
+});
+
+export const reviewsRelations = relations(reviews, ({ one }) => ({
+  movie: one(movies, {
+    fields: [reviews.movieId],
+    references: [movies.id],
+  }),
+}));
+
+export const selectReviewSchema = createSelectSchema(reviews);
+export const insertReviewSchema = createInsertSchema(reviews);
+export type ReviewType = z.infer<typeof selectReviewSchema>;
+export type InsertReviewType = z.infer<typeof insertReviewSchema>;

@@ -18,10 +18,31 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  overflow-y: scroll;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+h1 {
+  @apply text-5xl font-bold my-4;
+}
+
+h2 {
+  @apply text-3xl font-bold my-8;
+}
+
+h3 {
+  @apply text-2xl font-bold my-4;
+}
+
+h4 {
+  @apply text-xl font-bold my-4;
+}
+
+dt {
+  @apply uppercase font-bold text-xs mt-4 mb-2 text-neutral-600;
 }

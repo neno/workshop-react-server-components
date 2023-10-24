@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useState, cloneElement } from 'react';
 import { clsx } from 'clsx';
 
@@ -13,7 +15,7 @@ interface ITabs {
 }
 
 export const Tabs = ({ children, defaultTab }: ITabs) => {
-  const [activeTab, setActiveTab] = useState(defaultTab || (children[0]?.props.name || ''));
+  const [activeTab, setActiveTab] = useState(defaultTab || (children[0]?.props?.name || ''));
 
   return (
     <>
@@ -30,7 +32,7 @@ export const Tabs = ({ children, defaultTab }: ITabs) => {
           onChange={(e) => setActiveTab(e.target.value)}
         >
           {children.map((child, index) => (
-            <option key={child.props.name}>{child.props.name}</option>
+            <option key={child.props?.name}>{child.props?.name}</option>
           ))}
         </select>
       </div>
@@ -38,22 +40,22 @@ export const Tabs = ({ children, defaultTab }: ITabs) => {
         <div className="border-b border-neutral-200">
           <ul className="-mb-px flex space-x-8">
             {children.map((child, index) => (
-              <li key={child.props.name}>
+              <li key={child.props?.name}>
                 <button
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
-                    setActiveTab(child.props.name);
+                    setActiveTab(child.props?.name);
                   }}
                   className={clsx(
-                    child.props.name === activeTab
+                    child.props?.name === activeTab
                       ? 'border-indigo-500 text-indigo-600'
                       : 'border-transparent text-neutral-600 hover:border-neutral-200 hover:text-neutral-200',
                     'flex whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium'
                   )}
-                  aria-current={child.props.name === activeTab ? 'page' : undefined}
+                  aria-current={child.props?.name === activeTab ? 'page' : undefined}
                 >
-                  {child.props.name}
+                  {child.props?.name}
                 </button>
               </li>
             ))}
@@ -63,8 +65,8 @@ export const Tabs = ({ children, defaultTab }: ITabs) => {
       {/* Render tab content */}
       <div className="tab-panels mt-6">
         {children.map((child) => {
-          if (child.props.name === activeTab) {
-            return cloneElement(child, { key: child.props.name });
+          if (child.props?.name === activeTab) {
+            return cloneElement(child, { key: child.props?.name });
           }
           return null;
         })}

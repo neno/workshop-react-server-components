@@ -14,8 +14,10 @@ const SearchPage = async ({ searchParams: { q } }: SearchPageProps) => {
 
   return (
     <main className='container mx-auto'>
-      <H1 heading={`Search results`} />
+      <H1 heading={`Search movies`} />
+
       <SearchForm className='mt-8 mb-16' />
+
       <MovieList movies={movies} />
     </main>
   );
