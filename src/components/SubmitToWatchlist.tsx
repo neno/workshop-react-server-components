@@ -56,10 +56,12 @@ export const SubmitToWatchlist = ({
     error: '',
     success: false,
   });
-
-  console.log({ state });
-
-  return <form action={formAction}>
-    <SubmitToWatchlistFormBody movieId={movieId} isInWatchlist={isInWatchlist} />
-  </form>;
+  return (
+    <form action={formAction}>
+      <SubmitToWatchlistFormBody
+        movieId={movieId}
+        isInWatchlist={isInWatchlist}
+      />
+    </form>
+  );
 };
