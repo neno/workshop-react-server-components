@@ -11,7 +11,8 @@ export const Deflist = async ({ movie }: DeflistProps) => {
 
   const movieGenres = movie.genreIds
     ?.split(',')
-    .map((id) => genres.find((genre) => genre.id === Number(id))?.name)
+    .map((id: string) => genres.find((genre) => genre.id === Number(id))?.name)
+    .filter((genre: string) => !!genre)
     .join(', ');
 
 

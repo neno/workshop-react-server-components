@@ -42,3 +42,7 @@ h3 {
 h4 {
   @apply text-xl font-bold my-4;
 }
+
+dt {
+  @apply uppercase font-bold text-xs mt-4 mb-2 text-neutral-600;
+}
