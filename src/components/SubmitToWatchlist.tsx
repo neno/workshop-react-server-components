@@ -1,7 +1,7 @@
 'use client';
 
 import { submitToWatchlistAction } from '@/app/actions';
-import { ButtonSpinner } from '@/ui/ButtonSpinner';
+import { Spinner } from '@/ui/Spinner';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -20,8 +20,7 @@ const SubmitToWatchlistFormBody = ({
   isInWatchlist,
 }: SubmitToWatchlistFormBodyProps) => {
   const formStatus = useFormStatus();
-  console.log({ formStatus });
-  
+
   return (
     <fieldset>
       <input type='hidden' name='movieId' value={movieId} />
@@ -31,7 +30,7 @@ const SubmitToWatchlistFormBody = ({
         value={isInWatchlist ? 'true' : 'false'}
       />
       {formStatus.pending ? (
-        <ButtonSpinner />
+        <Spinner />
       ) : (
         <button
           type='submit'

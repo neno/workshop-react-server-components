@@ -1,30 +1,12 @@
 "use server"
 
+import { WATCHLIST_ID } from '@/constants';
 import { addMovieToCategory, removeMovieFromCategory} from '@/lib/api';
 import {revalidatePath} from "next/cache";
-import { setTimeout } from 'timers/promises'
-
-export const addMovieIdToWatchlist = (movieId: number) => {
-  console.log('addMovieIdToWatchlist', movieId);
-  
-  addMovieToCategory(movieId, 4);
-  revalidatePath("/")
-}
-
-export const addToWatchlist = async (movieId: number) => {
-  addMovieToCategory(movieId, 4);
-};
-
-export const removeFromWatchlist = async (movieId: number) => {
-  removeMovieFromCategory(movieId, 4);
-};
-
-
 
 export const submitToWatchlistAction = async (prevState:any, formData: FormData) => {
   const movieId = formData.get('movieId');
   const isInWatchlist = formData.get('isInWatchlist');
-  console.log('submitToWatchlistAction', {movieId, isInWatchlist});
 
   if (!movieId || !isInWatchlist) {
     return {
@@ -33,13 +15,11 @@ export const submitToWatchlistAction = async (prevState:any, formData: FormData)
     };
   }
 
-  // await setTimeout(3000);
-
   try {
     if (isInWatchlist === 'true') {
-      await removeFromWatchlist(Number(movieId));
+      await removeMovieFromCategory(Number(movieId), WATCHLIST_ID);
     } else {
-      await addToWatchlist(Number(movieId));
+      await addMovieToCategory(Number(movieId), WATCHLIST_ID);
     }
     
     revalidatePath('/', 'page');
