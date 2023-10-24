@@ -28,6 +28,7 @@ export async function Nav() {
           ))}
           <NavLink href='/movies'>Movies</NavLink>
           <NavLink href='/search'>Search</NavLink>
+          <NavLink href='/docs'>Documentation</NavLink>
         </div>
       </Stack>
     </nav>
