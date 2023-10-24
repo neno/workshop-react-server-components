@@ -20,6 +20,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
+        <div className='h-full'>
+
         <header className="py-8">
           <Container>
             <Nav />
@@ -28,13 +30,14 @@ export default function RootLayout({
         <main className='container mx-auto'>
           <Container>{children}</Container>
         </main>
-        <footer className='container mx-auto my-16'>
+        <footer className='container mx-auto my-16 sticky-bottom-0'>
           <Container>
             <p className='text-center text-neutral-400'>
               &copy; {new Date().getFullYear()} {APP_NAME}
             </p>
           </Container>
         </footer>
+        </div>
       </body>
     </html>
   );

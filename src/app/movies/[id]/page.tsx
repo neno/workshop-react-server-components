@@ -25,13 +25,13 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
       <MovieHero movie={movie} isInWatchlist={isInWatchlist} />
       <div className='grid grid-cols-2 gap-16'>
         <section>
-          <h2>Reviews</h2>
+          <h2 className='border-b border-neutral-600 pb-2'>Reviews</h2>
           <Suspense fallback={<p>Loading...</p>}>
             <Reviews movieId={movie.id} />
           </Suspense>
         </section>
         <section>
-          <h2>Details</h2>
+          <h2 className='border-b border-neutral-600 pb-2'>Details</h2>
           <Deflist movie={movie} />
         </section>
       </div>
