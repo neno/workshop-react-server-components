@@ -26,29 +26,42 @@ export default function DocsPage() {
             height={1200}
           />
         </div>
-        
-        <h3 className='my-0'>Problems with this approach</h3>
+
+        <h3 className='my-0'>Benefits ????</h3>
+        <ul className='list-disc pl-4'></ul>
+
+        <h3 className='my-0'>Problems</h3>
         <ul className='list-disc pl-4'>
           <li>Empty page</li>
           <li>No SEO</li>
-          <li>Potentially bad user experience:
+          <li>
+            Potentially bad user experience:
             <br />
-            user needs to wait until bundle is loaded and executed.
-            Then usually a spinner or a content skeleton is shown.
-            But still all the data from all components needs to be loaded and rendered client-side for that the user sees some meaningfull content on
-            </li>
-          <li>Maybe parent component has a useEffect call which loads data from the server and renders children which also have useEffect hooks and also load data from the server. And so on...</li>
+            user needs to wait until bundle is loaded and executed. Then usually
+            a spinner or a content skeleton is shown. But still all the data
+            from all components needs to be loaded and rendered client-side for
+            that the user sees some meaningfull content on
+          </li>
+          <li>
+            Maybe parent component has a useEffect call which loads data from
+            the server and renders children which also have useEffect hooks and
+            also load data from the server. And so on...
+          </li>
           <li>This will then lead to infamous the network waterfall</li>
         </ul>
-
-
 
         <h2 className='my-0'>Server-side Rendering</h2>
 
         <ul className='list-disc pl-4'>
           <li>Client requests a page</li>
-          <li>Server fetches data and responds with rendered HTML, the JS bundle and also content in JSON format.</li>
-          <li>Then Client sees the rendered HTML but to make it interactive he needs to re-hydrate the HTML with downloaded JS and JSON content.</li>
+          <li>
+            Server fetches data and responds with rendered HTML, the JS bundle
+            and also content in JSON format.
+          </li>
+          <li>
+            Then Client sees the rendered HTML but to make it interactive he
+            needs to re-hydrate the HTML with downloaded JS and JSON content.
+          </li>
           <li>Client requests content from the database</li>
           <li>Client renders the page</li>
         </ul>
@@ -57,14 +70,23 @@ export default function DocsPage() {
         <ul className='list-disc pl-4'>
           <li>SEO</li>
           <li>User has content initially loaded in to the shell.</li>
-          <li>Better user experience:  Faster load time because no api calls are need for initial content.</li>
-          <li>Subsequent loadings are taking place in background, user does not notice them.</li>
+          <li>
+            Better user experience: Faster load time because no api calls are
+            need for initial content.
+          </li>
+          <li>
+            Subsequent loadings are taking place in background, user does not
+            notice them.
+          </li>
         </ul>
 
         <h3 className='my-0'>Problems with this approach</h3>
         <ul className='list-disc pl-4'>
           <li>Content rendering is taking place on Server and Client side</li>
-          <li>React needs to rehydrate the content and connect static HTML with the Virtual-DOM.</li>
+          <li>
+            React needs to rehydrate the content and connect static HTML with
+            the Virtual-DOM.
+          </li>
           <li>No SEO</li>
         </ul>
 
@@ -76,14 +98,57 @@ export default function DocsPage() {
             height={1204}
           />
         </div>
+
+        <h2 className='my-0'>React Server Components</h2>
+        <div className='max-w-5xl relative'>
+          <Image
+            src='/06.png'
+            alt='Visualzed flow of a server-side React app'
+            width={1358}
+            height={534}
+          />
+        </div>
+
+        <h3>New Paradigm</h3>
+        <ul className='list-disc pl-4'>
+          <li>Server components are the default</li>
+          <li>Client components need to marked with &lsquo;useclient&rsquo;</li>
+        </ul>
+
+        <div className='max-w-5xl relative'>
+          <Image
+            src='/09.png'
+            alt='Visualzed flow of a server-side React app'
+            width={1428}
+            height={848}
+          />
+        </div>
+
+        <h3>Benefits</h3>
+        <ul className='list-disc pl-4'>
+          <li>
+            React Server Components is not a replacement for Server Side
+            Rendering.
+          </li>
+          <li>
+            In contrast to traditional SSR (Server Side Rendering) to re-fetch
+            and re-render the whole page. They enable a much more fine grained
+            control over what needs to be updated.
+          </li>
+          <li>
+            Server components are not shipped as HTML to client but as a Stream
+            that looks very much like JSON
+          </li>
+          <li>
+            The Server Component that needs to be updated gets rendered on the
+            server and streamed to the client. This enables React on the client
+            to just replace this single piece of the whole page.
+          </li>
+        </ul>
+
+        <h3>Problems</h3>
+        <p>Only time can tell - but I am sure, we will see soon...</p>
       </Stack>
-      {/* <h2>A server-side React app</h2>
-      <Image
-        src='/02.png'
-        alt='Visualzed flow of a server-side React app'
-        width={1416}
-        height={764}
-      /> */}
     </div>
   );
 }
