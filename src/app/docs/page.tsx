@@ -47,8 +47,8 @@ export default function DocsPage() {
 
         <ul className='list-disc pl-4'>
           <li>Client requests a page</li>
-          <li>Server responds with empty HTML and a JS bundle</li>
-          <li>Client downloads the JS bundle</li>
+          <li>Server fetch Data and responds rendered HTML. But HTML is not interactive.</li>
+          <li>Then Client downloads the JS bundle and "hydration" (do we need to explain hydration here) is run, making HTML interactive</li>
           <li>Client requests content from the database</li>
           <li>Client renders the page</li>
         </ul>
