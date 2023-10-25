@@ -25,9 +25,6 @@ export default function DocsPage() {
           />
         </div>
 
-        <h3 className='my-0'>Benefits ????</h3>
-        <ul className='list-disc pl-4 flex flex-col gap-2'></ul>
-
         <h3 className='my-0'>Problems</h3>
         <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Empty page</li>
@@ -49,6 +46,15 @@ export default function DocsPage() {
         </ul>
 
         <h2 className='my-0'>Server-side Rendering</h2>
+
+        <div className='max-w-5xl relative'>
+          <Image
+            src='/04.png'
+            alt='Visualzed flow of a server-side React app'
+            width={1446}
+            height={1204}
+          />
+        </div>
 
         <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Client requests a page</li>
@@ -87,15 +93,6 @@ export default function DocsPage() {
           </li>
           <li>No SEO</li>
         </ul>
-
-        <div className='max-w-5xl relative'>
-          <Image
-            src='/04.png'
-            alt='Visualzed flow of a server-side React app'
-            width={1446}
-            height={1204}
-          />
-        </div>
 
         <h2 className='my-0'>React Server Components</h2>
 
