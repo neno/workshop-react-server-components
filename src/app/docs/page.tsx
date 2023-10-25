@@ -6,10 +6,8 @@ import styles from './docs.module.css';
 export default function DocsPage() {
   return (
     <div className='max-w-5xl'>
-      <h1>Docs</h1>
-      <p>Docs page</p>
-
       <Stack className='gap-8'>
+      <h1>React Server Components: What & Why</h1>
         <h2 className='my-0'>A client-side React app</h2>
         <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Client requests a page</li>
