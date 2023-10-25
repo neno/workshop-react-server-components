@@ -11,7 +11,7 @@ export default function DocsPage() {
 
       <Stack className='gap-8'>
         <h2 className='my-0'>A client-side React app</h2>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Client requests a page</li>
           <li>Server responds with empty HTML and a JS bundle</li>
           <li>Client downloads the JS bundle</li>
@@ -28,10 +28,10 @@ export default function DocsPage() {
         </div>
 
         <h3 className='my-0'>Benefits ????</h3>
-        <ul className='list-disc pl-4'></ul>
+        <ul className='list-disc pl-4 flex flex-col gap-2'></ul>
 
         <h3 className='my-0'>Problems</h3>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Empty page</li>
           <li>No SEO</li>
           <li>
@@ -52,7 +52,7 @@ export default function DocsPage() {
 
         <h2 className='my-0'>Server-side Rendering</h2>
 
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Client requests a page</li>
           <li>
             Server fetches data and responds with rendered HTML, the JS bundle
@@ -67,7 +67,7 @@ export default function DocsPage() {
         </ul>
 
         <h3 className='my-0'>Benefits</h3>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>SEO</li>
           <li>User has content initially loaded in to the shell.</li>
           <li>
@@ -81,7 +81,7 @@ export default function DocsPage() {
         </ul>
 
         <h3 className='my-0'>Problems with this approach</h3>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Content rendering is taking place on Server and Client side</li>
           <li>
             React needs to rehydrate the content and connect static HTML with
@@ -100,6 +100,19 @@ export default function DocsPage() {
         </div>
 
         <h2 className='my-0'>React Server Components</h2>
+
+        <h3>Why?</h3>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
+          <li>
+            A majority of a React application is usually static. Think about E-Commerce shop. All the products lists and product details are static.
+            Only the cart and interaction elements (e.g. search field, Add to Cart button, etc.) are dynamic.</li>
+          <li>This means all static parts will never get updated and they don&apos;t need any kind of interaction.</li>
+          <li>Also, when using server components, you can still benefit from heavy libraries e.g. markdown, moment, etc. because they are used on Server-side,
+            which means they are not shipped to the client because they are not included in any JS bundle.</li>
+        </ul>
+
+        <h3>What are Server Components</h3>
+
         <div className='max-w-5xl relative'>
           <Image
             src='/06.png'
@@ -110,7 +123,7 @@ export default function DocsPage() {
         </div>
 
         <h3>New Paradigm</h3>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Server components are the default</li>
           <li>Client components need to marked with &lsquo;useclient&rsquo;</li>
         </ul>
@@ -125,7 +138,7 @@ export default function DocsPage() {
         </div>
 
         <h3>Benefits</h3>
-        <ul className='list-disc pl-4'>
+        <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>
             React Server Components is not a replacement for Server Side
             Rendering.
@@ -143,6 +156,10 @@ export default function DocsPage() {
             The Server Component that needs to be updated gets rendered on the
             server and streamed to the client. This enables React on the client
             to just replace this single piece of the whole page.
+          </li>
+          <li>
+            With Server Components you can talk directly to the database, use any kind of credentials
+            and they will never get exposed to the client.
           </li>
         </ul>
 
