@@ -47,10 +47,25 @@ export default function DocsPage() {
 
         <ul className='list-disc pl-4'>
           <li>Client requests a page</li>
-          <li>Server fetch Data and responds rendered HTML. But HTML is not interactive.</li>
-          <li>Then Client downloads the JS bundle and "hydration" (do we need to explain hydration here) is run, making HTML interactive</li>
+          <li>Server fetches data and responds with rendered HTML, the JS bundle and also content in JSON format.</li>
+          <li>Then Client sees the rendered HTML but to make it interactive he needs to re-hydrate the HTML with downloaded JS and JSON content.</li>
           <li>Client requests content from the database</li>
           <li>Client renders the page</li>
+        </ul>
+
+        <h3 className='my-0'>Benefits</h3>
+        <ul className='list-disc pl-4'>
+          <li>SEO</li>
+          <li>User has content initially loaded in to the shell.</li>
+          <li>Better user experience:  Faster load time because no api calls are need for initial content.</li>
+          <li>Subsequent loadings are taking place in background, user does not notice them.</li>
+        </ul>
+
+        <h3 className='my-0'>Problems with this approach</h3>
+        <ul className='list-disc pl-4'>
+          <li>Content rendering is taking place on Server and Client side</li>
+          <li>React needs to rehydrate the content and connect static HTML with the Virtual-DOM.</li>
+          <li>No SEO</li>
         </ul>
 
         <div className='max-w-5xl relative'>
