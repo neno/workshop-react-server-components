@@ -1,3 +1,15 @@
+# Workshop React Server Components
+
+## Installation
+
+```bash
+Make sure you are running node: '>=18.17.0'
+
+pnpm i
+# or
+npm i
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -14,6 +26,7 @@ pnpm dev
 bun dev
 ```
 
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
@@ -29,24 +42,24 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Build and checout the production mode for speed
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm build
+# or
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-// get popular movies
-https://api.themoviedb.org/3/movie/popular?api_key=00f3f32198696caff437631c007a7548
-https://api.themoviedb.org/3/movie/popular?api_key=00f3f32198696caff437631c007a7548&page=2
+## Some interesting things to check out
 
-// get top rated movies
-https://api.themoviedb.org/3/movie/top_rated?api_key=00f3f32198696caff437631c007a7548&language=en-US&page=1
+1. All components are server components except for the NavLinks in the navigation, the SearchForm and the SubmitToWatchlist form.
 
-// get upcoming movies
-https://api.themoviedb.org/3/movie/upcoming?api_key=00f3f32198696caff437631c007a7548&language=en-US&page=1
+2. The search page is also only rendered server-side using url search params instead of a client state.
 
-// get genres
-https://api.themoviedb.org/3/genre/movie/list?api_key=00f3f32198696caff437631c007a7548
+3. The movie detail page in `app/movies/[id]/page.tsx` wraps the Reviews with a Suspense. This means that the Reviews will not be in the inital HTML response. They are fetched from [https://api.themoviedb.org](https://api.themoviedb.org) and will be streamed after they are rendered using Markdown and Day.js when they are ready.
 
-// get movies by genre id
-https://api.themoviedb.org/3/genre/28/movies?api_key=00f3f32198696caff437631c007a7548&language=en-US&page=1
+4. On movie detial page you can add/remove the movie to/from the Watchlist. This is done by using a s [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions)
+
+5. For more informations about the concept of React Server Components checkout the documentation page of the app [http://localhost:3000/docs](http://localhost:3000/docs)

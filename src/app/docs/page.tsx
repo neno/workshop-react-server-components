@@ -1,13 +1,32 @@
 import { Stack } from '@/ui/Stack';
 import Image from 'next/image';
-
-import styles from './docs.module.css';
+import Link from 'next/link';
 
 export default function DocsPage() {
   return (
     <div className='max-w-5xl'>
       <Stack className='gap-8'>
-      <h1>React Server Components: What & Why</h1>
+        <h1>React Server Components: What & Why</h1>
+
+        <h2 className='my-0'>Introduction</h2>
+        <p>
+          Checkout the official React Server Components RFC:&nbsp;
+          <Link  className='underline' href='https://nextjs.org/docs/app/building-your-application/rendering/server-components'>Server Components</Link> and <Link className='underline' href='https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns'>Composition pattern</Link>
+          
+        </p>
+        <p>
+          All the diagrams are taken from:&nbsp;
+          <Link
+            className='underline'
+            href='https://www.joshwcomeau.com/react/server-components'
+          >
+            https://www.joshwcomeau.com/react/server-components
+          </Link>
+          <br />
+          Anyway, this is in my opintion the best article explaining the concept
+          and the evolution of React Server Components so far.
+        </p>
+
         <h2 className='my-0'>A client-side React app</h2>
         <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>Client requests a page</li>
@@ -99,11 +118,21 @@ export default function DocsPage() {
         <h3>Why?</h3>
         <ul className='list-disc pl-4 flex flex-col gap-2'>
           <li>
-            A majority of a React application is usually static. Think about E-Commerce shop. All the products lists and product details are static.
-            Only the cart and interaction elements (e.g. search field, Add to Cart button, etc.) are dynamic.</li>
-          <li>This means all static parts will never get updated and they don&apos;t need any kind of interaction.</li>
-          <li>Also, when using server components, you can still benefit from heavy libraries e.g. markdown, moment, etc. because they are used on Server-side,
-            which means they are not shipped to the client because they are not included in any JS bundle.</li>
+            A majority of a React application is usually static. Think about
+            E-Commerce shop. All the products lists and product details are
+            static. Only the cart and interaction elements (e.g. search field,
+            Add to Cart button, etc.) are dynamic.
+          </li>
+          <li>
+            This means all static parts will never get updated and they
+            don&apos;t need any kind of interaction.
+          </li>
+          <li>
+            Also, when using server components, you can still benefit from heavy
+            libraries e.g. markdown, moment, etc. because they are used on
+            Server-side, which means they are not shipped to the client because
+            they are not included in any JS bundle.
+          </li>
         </ul>
 
         <h3>What are Server Components</h3>
@@ -153,8 +182,9 @@ export default function DocsPage() {
             to just replace this single piece of the whole page.
           </li>
           <li>
-            With Server Components you can talk directly to the database, use any kind of credentials
-            and they will never get exposed to the client.
+            With Server Components you can talk directly to the database, use
+            any kind of credentials and they will never get exposed to the
+            client.
           </li>
         </ul>
 
