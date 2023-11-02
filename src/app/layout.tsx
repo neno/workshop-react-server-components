@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { GeistSans } from "geist/font";
+import { GeistSans } from 'geist/font';
 import { Nav } from '@/ui/nav/Nav';
 import { Container } from '@/ui/Container';
 import { APP_NAME } from '@/constants';
@@ -18,23 +18,25 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={GeistSans.className}>
+        <noscript className='text-white text-5xl'>
+          !!!!!!!!! Javascript is disabled !!!!!!!!
+        </noscript>
         <div className='h-full'>
-
-        <header className="py-8">
-          <Container>
-            <Nav />
-          </Container>
-        </header>
-        <main className='container mx-auto'>
-          <Container>{children}</Container>
-        </main>
-        <footer className='container mx-auto my-16 sticky-bottom-0'>
-          <Container>
-            <p className='text-center text-neutral-400'>
-              &copy; {new Date().getFullYear()} {APP_NAME}
-            </p>
-          </Container>
-        </footer>
+          <header className='py-8'>
+            <Container>
+              <Nav />
+            </Container>
+          </header>
+          <main className='container mx-auto'>
+            <Container>{children}</Container>
+          </main>
+          <footer className='container mx-auto my-16 sticky-bottom-0'>
+            <Container>
+              <p className='text-center text-neutral-400'>
+                &copy; {new Date().getFullYear()} {APP_NAME}
+              </p>
+            </Container>
+          </footer>
         </div>
       </body>
     </html>
