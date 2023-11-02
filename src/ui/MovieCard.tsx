@@ -17,8 +17,10 @@ export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
     >
       <Image
         className='object-cover hover:scale-[120%] transition-scale duration-500 ease-out'
+        width={364}
+        height={243}
         sizes='17vw'
-        fill
+        // fill
         src={getImageUrl(movie.posterPath)}
         alt={movie.title || ''}
         priority={priorityImage}
@@ -26,3 +28,4 @@ export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
     </Link>
   );
 };
+// 243x364

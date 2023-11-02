@@ -7,10 +7,11 @@ import { Suspense } from 'react';
 import { Reviews } from '@/components/Reviews';
 import { MovieHero } from '../../../components/MovieHero';
 import { Deflist } from '@/components/Deflist';
+import { WATCHLIST_ID } from '@/constants';
 
 async function MoviePage({ params: { id } }: { params: { id: number } }) {
   const movie = await loadMovieById(id);
-  const moviesInWatchlist = await getMoviesByCategory(4);
+  const moviesInWatchlist = await getMoviesByCategory(WATCHLIST_ID);
   const movieIdsInWatchlist = moviesInWatchlist.map((movie) =>
     Number(movie.id)
   );
