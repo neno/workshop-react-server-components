@@ -1,24 +1,15 @@
 'use client';
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 
-export const SearchForm = ({ className }: { className?: string }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const searchTerm = searchParams.get('q');
-  const [query, setQuery] = useState(searchParams.get('q') || '');
+type SearchFormProps = {
+  handleInputChange: (q: string) => void;
+  defaultValue?: string;
+  placeholder?: string;
+  className?: string;
+}
 
-  const debounced = useDebouncedCallback((value) => {
-    setQuery(encodeURIComponent(value));
-  }, 500);
-
-  useEffect(() => {
-    router.push(`/search?q=${query}`);
-  }, [query, router]);
-
+export const SearchForm = ({ handleInputChange, defaultValue = '', placeholder = 'Search', className }: SearchFormProps) => {
   return (
     <div className='w-1/2 mx-auto'>
       <form
@@ -39,10 +30,10 @@ export const SearchForm = ({ className }: { className?: string }) => {
             <input
               id='search'
               className='block w-full rounded-md border-0 bg-neutral-700 py-1.5 pl-10 pr-3 text-neutral-300 placeholder:text-neutral-400 focus:bg-white focus:text-neutral-900 focus:ring-0 sm:text-sm sm:leading-6'
-              placeholder='Search'
+              placeholder={placeholder}
               type='search'
-              defaultValue={searchTerm ?? ''}
-              onChange={(e) => debounced(e.target.value)}
+              defaultValue={defaultValue}
+              onChange={(e) => handleInputChange(e.target.value)}
             />
           </div>
         </fieldset>
