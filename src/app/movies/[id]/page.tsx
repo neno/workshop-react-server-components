@@ -4,9 +4,9 @@ import {
 } from '@/lib/api';
 import { Stack } from '@/ui/Stack';
 import { Suspense } from 'react';
-import { Reviews } from '@/app/movies/[id]/components/Reviews';
-import { MovieHero } from './components/MovieHero';
-import { Deflist } from '@/app/movies/[id]/components/Deflist';
+import { Reviews } from '@/app/movies/[id]/_components/Reviews';
+import { MovieHero } from './_components/MovieHero';
+import { Deflist } from '@/app/movies/[id]/_components/Deflist';
 import { WATCHLIST_ID } from '@/constants';
 
 async function MoviePage({ params: { id } }: { params: { id: number } }) {

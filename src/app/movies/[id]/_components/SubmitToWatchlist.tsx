@@ -1,6 +1,6 @@
 'use client';
 
-import { submitToWatchlistAction } from '@/app/actions';
+import { submitToWatchlistAction } from '@/actions/submitToWatchlist.action';
 import { Spinner } from '@/ui/Spinner';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useFormState, useFormStatus } from 'react-dom';

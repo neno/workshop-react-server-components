@@ -4,7 +4,7 @@ import { WATCHLIST_ID } from '@/constants';
 import { addMovieToCategory, removeMovieFromCategory} from '@/lib/api';
 import {revalidatePath} from "next/cache";
 
-export const submitToWatchlistAction = async (prevState:any, formData: FormData) => {
+export const submitToWatchlistAction = async (_prevState: unknown, formData: FormData) => {
   const movieId = formData.get('movieId');
   const isInWatchlist = formData.get('isInWatchlist');
 
@@ -24,6 +24,10 @@ export const submitToWatchlistAction = async (prevState:any, formData: FormData)
     
     revalidatePath('/', 'page');
     revalidatePath(`/movies/${movieId}`, 'page');
+
+    return {
+      success: true
+    };
   } catch (error) {
     return {
       error: 'Could not submit to watchlist',

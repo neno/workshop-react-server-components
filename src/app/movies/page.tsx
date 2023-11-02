@@ -2,7 +2,7 @@ import { searchByTitle } from '@/lib/api';
 import { H1 } from '@/ui/H1';
 import { MovieList } from '@/ui/MovieList';
 import { Suspense } from 'react';
-import { SearchMovies } from './components/SearchMovies';
+import { SearchMovies } from './_components/SearchMovies';
 
 type MoviesPageProps = {
   searchParams: {
