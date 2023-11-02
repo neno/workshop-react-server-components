@@ -24,6 +24,6 @@ export const SearchMovies = () => {
   }, [query, router]);
 
   return (
-    <SearchForm handleInputChange={debounced} placeholder='Search movies by title' defaultValue={searchTerm} className='mt-8 mb-16' />
+    <SearchForm handleInputChange={debounced} placeholder='Search movies by title' defaultValue={searchTerm} />
   );
 };

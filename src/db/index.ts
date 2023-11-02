@@ -49,8 +49,6 @@ export const getCategoryById = (id: number) => {
 }
 
 export const searchMoviesByTitle = async (title: string) => {
-  // db.select().from(table).where(ilike(table.column, "%llo wor%"));
-  // return await db.select().from(movies).where(like(movies.title, "%girl%"));
   return db.select().from(movies).where(like(movies.title, `%${title}%`));
 }
 
@@ -61,3 +59,22 @@ export const addMovieToCategory = async (movieIds: string, categoryId: number) =
 export const addReview = (review: schema.InsertReviewType) => {
   return db.insert(reviews).values(review).execute();
 };
+
+export const findMoviesByTitleAndGenre = async (title: string, genreIds: string) => {
+  const genreIdsArray = genreIds.split(',');
+  const moviesByTitle = await searchMoviesByTitle(title);
+  const filteredMovies = moviesByTitle.filter(movie => {
+    return movie.genreIds?.split(',').some(genreId => genreIdsArray.includes(genreId));
+  });
+  return filteredMovies;
+}
+
+export const findMoviesByGenreIds = async (genreIds: string) => {
+  const genreIdsArray = genreIds.split(',');
+  const allMovies = await getAllMovies();
+  const filteredMovies = allMovies.filter(movie => {
+    return movie.genreIds?.split(',').some(genreId => genreIdsArray.includes(genreId));
+  });
+  return filteredMovies;
+}
+
