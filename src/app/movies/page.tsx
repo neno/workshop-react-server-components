@@ -1,4 +1,4 @@
-import { searchByTitle, searchMoviesByTitleAndGenre } from '@/lib/api';
+import { searchMoviesByTitleAndGenre } from '@/lib/api';
 import { H1 } from '@/ui/H1';
 import { MovieList } from '@/ui/MovieList';
 import { Suspense } from 'react';
@@ -26,7 +26,9 @@ export default async function MoviesPage({
           <SearchMovies />
           <FilterMovies />
         </div>
-        <MovieList movies={movies} />
+        <Suspense key={`${q}-${genre}`}>
+          <MovieList movies={movies} />
+        </Suspense>
       </Suspense>
     </>
   );
