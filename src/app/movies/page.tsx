@@ -1,9 +1,10 @@
 import { searchMoviesByTitleAndGenre } from '@/lib/api';
 import { H1 } from '@/ui/H1';
-import { MovieList } from '@/ui/MovieList';
 import { Suspense } from 'react';
 import { SearchMovies } from './_components/SearchMovies';
 import { FilterMovies } from './_components/FilterMovies';
+import { MovieCard } from '@/ui/MovieCard';
+import { MovieGrid } from '@/ui/MovieGrid';
 
 type MoviesPageProps = {
   searchParams: {
@@ -21,14 +22,16 @@ export default async function MoviesPage({
   return (
     <>
       <H1 heading={heading} />
-      <Suspense>
-        <div className="flex flex-col gap-2 mt-8 mb-16">
-          <SearchMovies />
-          <FilterMovies />
-        </div>
-        <Suspense key={`${q}-${genre}`}>
-          <MovieList movies={movies} />
-        </Suspense>
+      <div className='flex flex-col gap-2 mt-8 mb-16'>
+        <SearchMovies />
+        <FilterMovies />
+      </div>
+      <Suspense key={`${q}-${genre}`}>
+        <MovieGrid>
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} cols={6} />
+          ))}
+        </MovieGrid>
       </Suspense>
     </>
   );

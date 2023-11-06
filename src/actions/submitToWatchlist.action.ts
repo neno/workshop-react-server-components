@@ -23,7 +23,7 @@ export const submitToWatchlistAction = async (_prevState: unknown, formData: For
     }
     
     revalidatePath('/', 'page');
-    revalidatePath(`/movies/${movieId}`, 'page');
+    revalidatePath(`/movies/${movieId}`);
 
     return {
       success: true

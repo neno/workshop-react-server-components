@@ -1,21 +1,21 @@
 import { APP_NAME, WATCHLIST_ID } from '@/constants';
-import { MoviesByCategory } from '../components/MoviesByCategory';
-import { MoviesByGenre } from '../components/MoviesByGenre';
 import { Suspense } from 'react';
+import { MoviesBySection } from '@/components/MoviesBySection';
 
 const Home = async () => {
   return (
     <>
       <h1 className='text-6xl font-bold text-center'>{APP_NAME}</h1>
-      <MoviesByCategory id={WATCHLIST_ID} priorityImage={true} />
+      <MoviesBySection id={WATCHLIST_ID} group='categories' priorityImage={true} cols={4} />
       <Suspense fallback={<div>Loading...</div>}>
-        <MoviesByCategory id={1} />
-        <MoviesByCategory id={2} />
-        <MoviesByCategory id={3} />
-        <MoviesByGenre id={28} />
-        <MoviesByGenre id={35} />
-        <MoviesByGenre id={18} />
-        <MoviesByGenre id={878} />
+        <MoviesBySection id={1} cols={6} group='categories' />
+        <MoviesBySection id={2} cols={6} group='categories' />
+        <MoviesBySection id={3} cols={6} group='categories' />
+        <MoviesBySection id={28} group='genres' />
+        <MoviesBySection id={28} group='genres' />
+        <MoviesBySection id={35} group='genres' />
+        <MoviesBySection id={18} group='genres' />
+        <MoviesBySection id={878} group='genres' />
       </Suspense>
     </>
   );

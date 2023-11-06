@@ -125,7 +125,7 @@ export default function DocsPage() {
           </li>
           <li>
             This means all static parts will never get updated and they
-            don&apos;t need any kind of interaction.
+            don&apos;t need any group of interaction.
           </li>
           <li>
             Also, when using server components, you can still benefit from heavy
@@ -183,7 +183,7 @@ export default function DocsPage() {
           </li>
           <li>
             With Server Components you can talk directly to the database, use
-            any kind of credentials and they will never get exposed to the
+            any group of credentials and they will never get exposed to the
             client.
           </li>
         </ul>

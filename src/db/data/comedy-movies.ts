@@ -255,7 +255,7 @@ export const comedyMovies: TmdbMovieItem[] = [
     popularity: 226.513,
     poster_path: '/xIRF6tXBhOGfbhNreRW7vtV1Wxk.jpg',
     release_date: '2022-09-28',
-    title: 'Two Of A Kind',
+    title: 'Two Of A group',
     video: false,
     vote_average: 5.8,
     vote_count: 115,

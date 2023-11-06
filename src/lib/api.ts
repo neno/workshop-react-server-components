@@ -1,6 +1,6 @@
-import {addMovieToCategory as dbAddMovieToCategory, findMoviesByGenreIds, findMoviesByTitleAndGenre, getAllGenres, getAllMovies, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle} from '@/db';
+import { addMovieToCategory as dbAddMovieToCategory, findMoviesByGenreIds, findMoviesByTitleAndGenre, getAllGenres, getAllMovies, getCategoryById, getGenreById, getMovieById, getMoviesByIds, searchMoviesByTitle } from '@/db';
 import { MovieType } from '@/db/schema';
-import { IApiReviewsByMovieResult } from '@/types';
+import { IApiReviewsByMovieResult, MovieGroupingType } from '@/types';
 
 export async function getMoviesByCategory(id: number, options = {}) {
   const res = await getCategoryById(id);
@@ -51,7 +51,7 @@ export async function searchMoviesByTitleAndGenre(title?: string, genre: string 
   return await getAllMovies();
 }
 
-export async function addMovieToCategory(movieId: number, categoryId: number)  {
+export async function addMovieToCategory(movieId: number, categoryId: number) {
   const res = await getCategoryById(categoryId);
   if (!res.length) {
     return null;
@@ -64,7 +64,7 @@ export async function addMovieToCategory(movieId: number, categoryId: number)  {
   return dbAddMovieToCategory(updatedMovieIds, categoryId);
 }
 
-export async function removeMovieFromCategory(movieId: number, categoryId: number)  {
+export async function removeMovieFromCategory(movieId: number, categoryId: number) {
   const res = await getCategoryById(categoryId);
   if (!res.length) {
     return null;
@@ -84,4 +84,23 @@ export async function fetchReviewsByMovieId(id: number): Promise<IApiReviewsByMo
 export async function loadMovieById(id: number): Promise<MovieType | undefined> {
   const [movie] = await getMovieById(id)
   return movie;
+}
+
+export async function getMovieSectionData(
+  id: number,
+  group: MovieGroupingType,
+  limit: number
+): Promise<{
+  sectionName: string;
+  movies: MovieType[];
+}> {
+  if (group === 'categories') {
+    const [category] = await getCategoryById(id);
+    const movies = await getMoviesByCategory(id, { limit });
+    return { sectionName: category.name, movies };
+  }
+
+  const [genre] = await getGenreById(id);
+  const movies = await getMoviesByGenre(id, { limit });
+  return { sectionName: genre.name, movies };
 }

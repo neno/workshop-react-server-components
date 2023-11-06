@@ -1,31 +1,33 @@
 import Image from 'next/image';
 import { MovieType } from '@/db/schema';
-import { getImageUrl } from '@/lib/helpers';
+import { clsxm, getImageUrl } from '@/lib/helpers';
 import Link from 'next/link';
 
 interface IMovieCardProps {
   movie: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>;
+  cols: number;
   priorityImage?: boolean;
 }
 
-export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
+export const MovieCard = ({ movie, priorityImage, cols = 6 }: IMovieCardProps) => {
   return (
     <Link
       key={movie.id}
       href={`/movies/${movie.id}`}
-      className='relative aspect-[2/3] overflow-hidden'
+      className={clsxm(
+        `relative aspect-2/3 overflow-hidden flex-1`,
+        `basis-1/${cols}`,
+      )}
     >
       <Image
-        className='object-cover hover:scale-[120%] transition-scale duration-500 ease-out'
-        width={364}
-        height={243}
+        className='max-w-full object-cover'
         sizes='17vw'
-        // fill
+        fill
         src={getImageUrl(movie.posterPath)}
         alt={movie.title || ''}
         priority={priorityImage}
+        quality={75}
       />
     </Link>
   );
 };
-// 243x364
