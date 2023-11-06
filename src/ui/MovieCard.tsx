@@ -6,14 +6,9 @@ import Link from 'next/link';
 interface IMovieCardProps {
   movie: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>;
   priorityImage?: boolean;
-  sizes?: string;
 }
 
-export const MovieCard = ({
-  movie,
-  priorityImage,
-  sizes = '17vm',
-}: IMovieCardProps) => {
+export const MovieCard = ({ movie, priorityImage }: IMovieCardProps) => {
   return (
     <Link
       key={movie.id}
@@ -22,8 +17,10 @@ export const MovieCard = ({
     >
       <Image
         className='object-cover hover:scale-[120%] transition-scale duration-500 ease-out'
-        sizes={sizes}
-        fill
+        width={364}
+        height={243}
+        sizes='17vw'
+        // fill
         src={getImageUrl(movie.posterPath)}
         alt={movie.title || ''}
         priority={priorityImage}
@@ -31,3 +28,4 @@ export const MovieCard = ({
     </Link>
   );
 };
+// 243x364
