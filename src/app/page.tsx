@@ -12,7 +12,6 @@ const Home = async () => {
         <MoviesBySection id={2} cols={6} group='categories' />
         <MoviesBySection id={3} cols={6} group='categories' />
         <MoviesBySection id={28} group='genres' />
-        <MoviesBySection id={28} group='genres' />
         <MoviesBySection id={35} group='genres' />
         <MoviesBySection id={18} group='genres' />
         <MoviesBySection id={878} group='genres' />
