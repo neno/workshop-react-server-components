@@ -45,11 +45,9 @@ export function addAllMovies() {
     validatedMovies.forEach((movie) => {
       addMovie(movie);
     });
-    console.info('Movies added');
     
     return validatedMovies;
   } catch (error) {
-    console.error(error);
   }
 }
 

@@ -10,15 +10,10 @@ type SubmitToWatchlistProps = {
   isInWatchlist: boolean;
 };
 
-type SubmitToWatchlistFormBodyProps = {
-  movieId: number;
-  isInWatchlist: boolean;
-};
-
 const SubmitToWatchlistFormBody = ({
   movieId,
   isInWatchlist,
-}: SubmitToWatchlistFormBodyProps) => {
+}: SubmitToWatchlistProps) => {
   const formStatus = useFormStatus();
 
   return (

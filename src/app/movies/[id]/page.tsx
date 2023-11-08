@@ -4,11 +4,10 @@ import {
 } from '@/lib/api';
 import { Stack } from '@/ui/Stack';
 import { Suspense } from 'react';
-import { Reviews } from '@/app/movies/[id]/_components/Reviews';
+import { Reviews } from './_components/Reviews';
 import { MovieHero } from './_components/MovieHero';
-import { Deflist } from '@/app/movies/[id]/_components/Deflist';
+import { Deflist } from './_components/Deflist';
 import { WATCHLIST_ID } from '@/constants';
-import { getAllMovies } from '@/db';
 
 async function MoviePage({ params: { id } }: { params: { id: number } }) {
   const movie = await loadMovieById(id);
@@ -42,12 +41,3 @@ async function MoviePage({ params: { id } }: { params: { id: number } }) {
 }
 
 export default MoviePage;
-
-export async function generateStaticParams() {
-  const movies = await getAllMovies();
-  return movies.map(({ id }) => ({
-    params: {
-      id,
-    },
-  }));
-}

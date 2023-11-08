@@ -1,8 +1,8 @@
-"use server"
+'use server';
 
 import { WATCHLIST_ID } from '@/constants';
-import { addMovieToCategory, removeMovieFromCategory} from '@/lib/api';
-import {revalidatePath} from "next/cache";
+import { addMovieToCategory, removeMovieFromCategory } from '@/lib/api';
+import { revalidatePath } from "next/cache";
 
 export const submitToWatchlistAction = async (_prevState: unknown, formData: FormData) => {
   const movieId = formData.get('movieId');
@@ -21,9 +21,9 @@ export const submitToWatchlistAction = async (_prevState: unknown, formData: For
     } else {
       await addMovieToCategory(Number(movieId), WATCHLIST_ID);
     }
-    
+
     revalidatePath('/', 'page');
-    revalidatePath(`/movies/${movieId}`);
+    revalidatePath(`/movies/${movieId}`, 'page');
 
     return {
       success: true

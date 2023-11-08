@@ -12,7 +12,6 @@ export function addGengres() {
       const validatedGenre = selectGenreSchema.parse(genreWithMovieIds);
       addGenre(validatedGenre);
     });
-    console.info('Genres added');
   } catch (error) {
     console.error(error);
   }
