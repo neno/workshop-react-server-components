@@ -8,7 +8,7 @@ import { SearchForm } from '@/ui/SearchForm';
 export const SearchMovies = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const searchTerm = searchParams.get('q') ?? '';
+  const searchTerm = searchParams?.get('q') ?? '';
   const [query, setQuery] = useState(searchTerm);
 
   const debounced = useDebouncedCallback((value) => {

@@ -7,13 +7,15 @@ interface IMovieCardProps {
   movie: Pick<MovieType, 'id' | 'posterPath' | 'title' | 'backdropPath'>;
   cols: number;
   priorityImage?: boolean;
+  urlPath?: string;
 }
 
-export const MovieCard = ({ movie, priorityImage, cols = 6 }: IMovieCardProps) => {
+export const MovieCard = ({ movie, priorityImage, cols = 6, urlPath = 'movies' }: IMovieCardProps) => {
   return (
     <Link
       key={movie.id}
-      href={`/movies/${movie.id}`}
+      href={`/${urlPath}/${movie.id}`}
+      prefetch={false}
       className={clsxm(
         `relative aspect-2/3 overflow-hidden flex-1`,
         `basis-1/${cols}`,

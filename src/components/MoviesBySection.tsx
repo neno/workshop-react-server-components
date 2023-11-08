@@ -21,6 +21,7 @@ export const MoviesBySection = async ({
 }: IMoviesByCategoryProps) => {
   const {sectionName, movies} = await getMovieSectionData(id, group, cols - 1);
   const diff = cols - movies.length - 1;
+  const urlPath = group === 'categories' ? 'movies/new' : 'movies/old'
 
   return (
     <Section title={sectionName}>
@@ -32,6 +33,7 @@ export const MoviesBySection = async ({
               movie={movie}
               priorityImage={priorityImage}
               cols={cols}
+              urlPath={urlPath}
             />
           ))}
         <ShowAll href={`/${group}/${id}`} cols={cols} />

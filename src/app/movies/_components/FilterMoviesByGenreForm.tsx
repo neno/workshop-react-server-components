@@ -26,7 +26,7 @@ export const FilterMoviesByGenreForm = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (formRef.current && searchParamsInputRef.current) {
-      const searchQuery = searchParams.get('q') ?? '';
+      const searchQuery = searchParams?.get('q') ?? '';
       searchParamsInputRef.current.value = searchQuery;
       
       formRef.current.requestSubmit();
