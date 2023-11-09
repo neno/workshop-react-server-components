@@ -16,29 +16,36 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  overflow-y: scroll;
-  background-color: black;
-  color: white
-}
-
-h1 {
-  @apply text-5xl font-bold my-4;
-}
-
-h2 {
-  @apply text-3xl font-bold my-8;
-}
-
-h3 {
-  @apply text-2xl font-bold my-4;
-}
-
-h4 {
-  @apply text-xl font-bold my-4;
-}
-
-dt {
-  @apply uppercase font-bold text-xs mt-4 mb-2 text-neutral-600;
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    overflow-y: scroll;
+    background-color: black;
+    color: white
+  }
+  
+  h1 {
+    @apply text-5xl font-bold my-4;
+  }
+  
+  h2 {
+    @apply text-3xl font-bold my-8;
+    @apply border-b border-neutral-600 pb-2;
+  }
+  
+  h3 {
+    @apply text-2xl font-bold my-4;
+  }
+  
+  h4 {
+    @apply text-xl font-bold my-4;
+  }
+  
+  dt {
+    @apply uppercase font-bold text-xs mt-4 mb-2 text-neutral-600;
+  }
+  
+  a {
+    @apply underline underline-offset-2 hover:text-lime-500;
+  }
 }

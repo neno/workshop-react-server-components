@@ -2,3 +2,8 @@
 .h3 {
   @apply my-0;
 }
+
+.stack {
+  @apply flex flex-col gap-8;
+}
+

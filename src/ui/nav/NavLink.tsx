@@ -24,7 +24,7 @@ export const NavLink: FC<NavLinkProps> = ({
   const Element = href ? Link : 'span';
 
   const cls = clsx(
-    'block py-2 rounded text-white px-3 hover:bg-white hover:text-gray-700 ',
+    'block py-2 rounded text-white px-3 hover:bg-white hover:text-gray-700 no-underline',
     'group-hover:pb-4 group-hover:-mb-2 group-hover:rounded-b-none group-hover:text-gray-700 group-hover:bg-white',
     active && 'text-white bg-purple-900 hover:bg-purple-900 group-hover:bg-purple-900'
   )
